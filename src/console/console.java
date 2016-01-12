@@ -1,4 +1,3 @@
-
 package console;
 
 import java.awt.BorderLayout;
@@ -15,34 +14,36 @@ import javax.swing.JTextField;
  * @author Preston Garno
  */
 public class console extends JPanel {
-    
+
     public static final console instance = new console();
-    
-    public static console getInstance(){ return instance;}
-    
+
+    public static console getInstance() {
+        return instance;
+    }
+
     private JScrollPane HUD;
     private JTextField input;
     private JTextArea textBox;
-    private final String newline = "\n";
-    
-    private console(){
+    private static final String newline = "\n";
+
+    private console() {
         setLayout(new BorderLayout(0, 5));
-        
-        
+
         textBox = new JTextArea(1, 1);
         textBox.setEditable(false);
-        
+
         HUD = new JScrollPane(textBox);
         HUD.setPreferredSize(new Dimension(765, 100));
-        
+
         input = new JTextField(765);
-        
+
         add(HUD, BorderLayout.CENTER);
-        
+
         input.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
             }
+
             @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
@@ -51,25 +52,36 @@ public class console extends JPanel {
                     input.setText("");
                 }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
             }
         });
-        
+
         add(input, BorderLayout.SOUTH);
-        
+
         setMinimumSize(new Dimension(765, 115));
     }
-    
-    public void log(String message) {
+
+    public static void log(String message) {
         instance.textBox.append(message + newline);
     }
-    
-    public String getLastLine(){
+
+    public String getLastLine() {
         String[] commands = instance.textBox.getText().split(newline);
-        
+
         return commands[commands.length - 1];
     }
-    
-    
+
+    public void displayException(Exception ex) {
+        log(ex.getMessage());
+    }
+
+    public static void log(Exception ex) {
+            StackTraceElement[] stackTrace = ex.getStackTrace();
+            log("ERROR! Exception at:");
+        for (StackTraceElement stackTrace1 : stackTrace) {
+            log(stackTrace1.toString());
+        }
+    }
 }

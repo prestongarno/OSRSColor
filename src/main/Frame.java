@@ -10,9 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,15 +18,15 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import loader.PanelHolder;
 import loader.tabbedPane;
 import resources.SplashScreen;
 import utilities.ScreenImage;
 
 /**
- *
  * @author Preston Garno
+ * 
+ * KEEP THIS CLASS AS SIMPLE AS POSSIBLE!!!
  */
 public class Frame extends JFrame {
 
@@ -105,27 +103,38 @@ public class Frame extends JFrame {
                 screenshot(tabs.games.get(0).game.getCanvas());
             }
         });
-        
+
         menu.AddTab.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addNewTab();
             }
         });
+
+        menu.RemoveTab.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int currentSelection = tabs.getSelectedIndex();
+                tabs.removeTabAt(currentSelection);
+                //stop the spplet after closing the tab
+                tabs.stopApplet(currentSelection);
+            }
+        });
     }
-    
-    //need to correctly show the splashscreen...
+
+    //need to correctly show the splashscreen... (Low priority)
     public void addNewTab() {
-        tabs.addGame(new PanelHolder("http://oldschool.runescape.com"));
-        log("PanelHolder() instance created and added to ArrayList!");
-        Thread thread = new Thread(tabs.games.get(tabs.games.size() - 1));
-        thread.start();
-        tabs.addTab("OSRS " + tabs.getTabCount(), tabs.games.get(tabs.games.size() - 1));
-        log("New panel added!");
-        tabs.addThread(thread);
-    }
-    
-    public static void log(String message) {
-        console.getInstance().log(message);
+        try {
+            tabs.addGame(new PanelHolder("http://oldschool.runescape.com"));
+            console.log("PanelHolder() instance created and added to ArrayList! index: " + tabs.lastGameIndex());
+            Thread thread = new Thread(tabs.games.get(tabs.lastGameIndex()));
+            thread.start();
+            tabs.addTab("OSRS " + tabs.getTabCount(), tabs.games.get(tabs.lastGameIndex()));
+            console.log("Index of game instance added: " + tabs.lastGameIndex());
+            console.log("New panel added!");
+            tabs.addThread(thread);
+        } catch (Exception ex) {
+            console.log(ex);
+        }
     }
 }

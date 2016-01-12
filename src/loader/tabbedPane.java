@@ -43,7 +43,21 @@ public class tabbedPane extends JTabbedPane {
         });
     }
     
+    public void stopApplet(int index){
+        try {
+            console.log("Index of tab closed: " + index + " = Index of game applet: " + index);
+            games.get(index).stopGame();
+            threadManager.get(this.getSelectedIndex()).stop();
+        } catch (Exception ex) {
+            console.log(ex);
+        }
+    }
+    
     public void addThread(Thread thread) {
         threadManager.add(thread);
+    }
+    
+    public int lastGameIndex(){
+        return games.size() - 1;
     }
 }

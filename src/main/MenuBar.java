@@ -15,7 +15,7 @@ public class MenuBar extends JMenuBar {
     private JMenu File, Edit, Window, Tools, Help;
     //**List of all Menu Items*/
     //public in order to simplify assigning actionlisteners
-    public JMenuItem ScreenShot, AddTab;
+    public JMenuItem ScreenShot, AddTab, RemoveTab;
     
     public MenuBar(){
         //Instantiate the menus
@@ -28,9 +28,11 @@ public class MenuBar extends JMenuBar {
         //instantiate the menu items
         ScreenShot = new JMenuItem("ScreenShot");
         AddTab = new JMenuItem("New Tab");
+        RemoveTab = new JMenuItem("Close Tab");
         //add items to menus
         Tools.add(ScreenShot);
         Window.add(AddTab);
+        Window.add(RemoveTab);
         //add the buttone
         add(File);
         add(Edit);
