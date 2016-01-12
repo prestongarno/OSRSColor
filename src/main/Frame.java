@@ -20,6 +20,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import loader.PanelHolder;
 import loader.tabbedPane;
+import ocr.ocr;
 import resources.SplashScreen;
 import utilities.ScreenImage;
 
@@ -78,15 +79,7 @@ public class Frame extends JFrame {
         setResizable(true);
     }
 
-    public void screenshot(Canvas c) {
-
-        //BufferedImage image = ScreenImage.createImage(c);
-        BufferedImage image = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_ARGB);
-
-        Graphics2D g2 = (Graphics2D) image.getGraphics();
-        c.print(g2);
-        g2.dispose();
-
+    public void testSaveImage(BufferedImage image) {
         try {
             ScreenImage.saveImage("plz_work.png", image);
             console.getInstance().log("ScreenShot taken!");
@@ -100,7 +93,8 @@ public class Frame extends JFrame {
         menu.ScreenShot.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                screenshot(tabs.games.get(0).game.getCanvas());
+                testSaveImage(ocr.getScreenShotOfCurrentCanvas());
+                console.log("ScreenShot taken!");
             }
         });
 

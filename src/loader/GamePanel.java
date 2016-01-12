@@ -1,5 +1,6 @@
 package loader;
 
+import console.console;
 import listeners.PaintListener;
 import utilities.*;
 import javax.swing.*;
@@ -10,6 +11,7 @@ import java.awt.*;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
+import ocr.ocr;
 
 /**
  * @author Preston Garno
@@ -72,6 +74,8 @@ public class GamePanel extends JPanel implements AppletStub {
         canvas.addPaintListener((PaintListener) g -> {
             //maybe add something here to constantly update a buffered image
             //of the top right corner of the screen?
+            ocr.canvas = canvas;
+            //console.log("Canvas updated...");
             g.setColor(Color.white);
             g.drawString("This is a Test", 50, 50);
         });
