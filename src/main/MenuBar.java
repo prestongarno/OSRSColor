@@ -1,6 +1,7 @@
 
 package main;
 
+import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -16,6 +17,7 @@ public class MenuBar extends JMenuBar {
     //**List of all Menu Items*/
     //public in order to simplify assigning actionlisteners
     public JMenuItem ScreenShot, AddTab, RemoveTab;
+    public JButton saveTopText;
     
     public MenuBar(){
         //Instantiate the menus
@@ -24,6 +26,9 @@ public class MenuBar extends JMenuBar {
         Window = new JMenu("Window");
         Tools = new JMenu("Tools");
         Help = new JMenu("Help");
+        
+        //gettopleft button develping OCR
+        saveTopText = new JButton("TopLeft");
         
         //instantiate the menu items
         ScreenShot = new JMenuItem("ScreenShot");
@@ -39,6 +44,7 @@ public class MenuBar extends JMenuBar {
         add(Window);
         add(Tools);
         add(Help);
+        add(saveTopText);
         //set visible?
         setVisible(true);
     }

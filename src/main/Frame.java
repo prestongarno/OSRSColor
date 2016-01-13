@@ -20,8 +20,6 @@ import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 import loader.PanelHolder;
 import loader.tabbedPane;
-import ocr.ocr;
-import resources.SplashScreen;
 import utilities.ScreenImage;
 
 /**
@@ -45,7 +43,11 @@ public class Frame extends JFrame {
         tabs.setBounds(new Rectangle(765, 503));
 
         setLayout(new BorderLayout());
-        addMenuActions();
+        try {
+            addMenuActions();
+        } catch (Exception ex) {
+            console.log(ex);
+        }
         add(menu, BorderLayout.NORTH);
         add(tabs, BorderLayout.CENTER);
         add(console.getInstance(), BorderLayout.SOUTH);
@@ -64,7 +66,7 @@ public class Frame extends JFrame {
 
         setSize(770, 710);
         addNewTab();
-
+        console.log("End of Constructor");
     }
 
     private void centerFrame() {
@@ -83,13 +85,16 @@ public class Frame extends JFrame {
             ScreenImage.saveImage(image);
             console.getInstance().log("ScreenShot Saved!");
         } catch (Exception ex) {
-
+            console.log(ex);
         }
     }
 
     private void addMenuActions() {
         menu.ScreenShot.addActionListener(screenShot);
-        menu.ScreenShot.setAccelerator(KeyStroke.getKeyStroke('P', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+        menu.ScreenShot.setAccelerator(KeyStroke.getKeyStroke('P', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+        
+        menu.saveTopText.addActionListener(saveTopLeft);
+        
 
         menu.AddTab.addActionListener(new ActionListener() {
             @Override
@@ -117,7 +122,6 @@ public class Frame extends JFrame {
             thread.start();
             tabs.addTab("OSRS " + tabs.getTabCount(), tabs.games.get(tabs.lastGameIndex()));
             console.log("Index of game instance added: " + tabs.lastGameIndex());
-            console.log("New panel added!");
             tabs.addThread(thread);
         } catch (Exception ex) {
             console.log(ex);
@@ -130,6 +134,20 @@ public class Frame extends JFrame {
             try {
                 BufferedImage image = tabs.games.get(tabs.getSelectedIndex()).game.getCanvas().getScreen();
                 testSaveImage(image);
+            } catch (Exception ex) {
+                console.log(ex);
+            }
+        }
+    };
+
+    private ActionListener saveTopLeft = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                //good luck figuring out this method chain lmao
+                BufferedImage topLeft = tabs.games.get(tabs.getSelectedIndex()).game.getCanvas().getScreen().getSubimage(0, 4, 380, 16);
+                testSaveImage(topLeft);
+                console.log("Top Left saved!");
             } catch (Exception ex) {
                 console.log(ex);
             }

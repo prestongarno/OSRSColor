@@ -6,13 +6,23 @@
 package ocr;
 
 /**
- *
  * @author Preston Garno
  */
 public class ocr {
 
     public ocr() {
-
+        
+    }
+    
+    public String readTopLeft(){
+        //get the image @ y = 5 through y = 21, x all the way across (16 pixels high, start at 5)
+        return "";
+    }
+    
+    // need an anti-ban scanner thread running constantly.
+    
+    public String readChatBox() {
+        return "";
     }
 
 }

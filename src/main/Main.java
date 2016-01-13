@@ -34,6 +34,10 @@ public class Main {
         } catch (Exception e) {
             console.log(e);
         }
-        new Frame();
+        try {
+            new Frame();
+        } catch (Exception e) {
+            console.log(e);
+        }
     }
 }
