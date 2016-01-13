@@ -7,10 +7,9 @@ package main;
 
 import console.console;
 import java.awt.BorderLayout;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +17,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
+import javax.swing.KeyStroke;
 import loader.PanelHolder;
 import loader.tabbedPane;
 import ocr.ocr;
@@ -26,13 +26,12 @@ import utilities.ScreenImage;
 
 /**
  * @author Preston Garno
- * 
+ *
  * KEEP THIS CLASS AS SIMPLE AS POSSIBLE!!!
  */
 public class Frame extends JFrame {
 
     tabbedPane tabs = null;
-    SplashScreen loading = new SplashScreen();
     MenuBar menu = new MenuBar();
 
     public Frame() {
@@ -43,13 +42,13 @@ public class Frame extends JFrame {
         centerFrame();
 
         tabs = new tabbedPane();
+        tabs.setBounds(new Rectangle(765, 503));
 
         setLayout(new BorderLayout());
         addMenuActions();
         add(menu, BorderLayout.NORTH);
         add(tabs, BorderLayout.CENTER);
         add(console.getInstance(), BorderLayout.SOUTH);
-        remove(loading);
 
         //stop all applets when frame closes
         addWindowListener(new WindowAdapter() {
@@ -64,6 +63,7 @@ public class Frame extends JFrame {
         });
 
         setSize(770, 710);
+        addNewTab();
 
     }
 
@@ -74,29 +74,22 @@ public class Frame extends JFrame {
         setMinimumSize(new Dimension(765, 553));
         setLocation(cX, cY);
         setBackground(Color.BLACK);
-        add(loading);
         setVisible(true);
         setResizable(true);
     }
 
     public void testSaveImage(BufferedImage image) {
         try {
-            ScreenImage.saveImage("plz_work.png", image);
-            console.getInstance().log("ScreenShot taken!");
+            ScreenImage.saveImage(image);
+            console.getInstance().log("ScreenShot Saved!");
         } catch (Exception ex) {
-            System.out.println("ERORRRRRRRR");
-            console.getInstance().log("Error taking Screenshot!");
+
         }
     }
 
     private void addMenuActions() {
-        menu.ScreenShot.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                testSaveImage(ocr.getScreenShotOfCurrentCanvas());
-                console.log("ScreenShot taken!");
-            }
-        });
+        menu.ScreenShot.addActionListener(screenShot);
+        menu.ScreenShot.setAccelerator(KeyStroke.getKeyStroke('P', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
 
         menu.AddTab.addActionListener(new ActionListener() {
             @Override
@@ -116,7 +109,6 @@ public class Frame extends JFrame {
         });
     }
 
-    //need to correctly show the splashscreen... (Low priority)
     public void addNewTab() {
         try {
             tabs.addGame(new PanelHolder("http://oldschool.runescape.com"));
@@ -131,4 +123,16 @@ public class Frame extends JFrame {
             console.log(ex);
         }
     }
+
+    private ActionListener screenShot = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                BufferedImage image = tabs.games.get(tabs.getSelectedIndex()).game.getCanvas().getScreen();
+                testSaveImage(image);
+            } catch (Exception ex) {
+                console.log(ex);
+            }
+        }
+    };
 }

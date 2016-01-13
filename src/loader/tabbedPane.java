@@ -15,19 +15,10 @@ public class tabbedPane extends JTabbedPane {
     public ArrayList<Thread> threadManager = null;
 
     public tabbedPane() {
-        setVisible(true);
-        PanelHolder holder = new PanelHolder("http://oldschool.runescape.com");
-
-        setBounds(new Rectangle(holder.getWidth(), holder.getHeight()));
         games = new ArrayList<>();
         threadManager = new ArrayList<>();
-        
-        Thread gameThread = new Thread(holder);
-        gameThread.start();
-        threadManager.add(gameThread);
-        
-        games.add(holder);
-        addTab("OSRS", holder);
+
+        setVisible(true);
     }
     
     public void addGame(PanelHolder game) {

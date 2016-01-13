@@ -72,10 +72,6 @@ public class GamePanel extends JPanel implements AppletStub {
     public static void notifyCanvasReady(Canvas canvas) {
         returnedCanvas = canvas;
         canvas.addPaintListener((PaintListener) g -> {
-            //maybe add something here to constantly update a buffered image
-            //of the top right corner of the screen?
-            ocr.canvas = canvas;
-            //console.log("Canvas updated...");
             g.setColor(Color.white);
             g.drawString("This is a Test", 50, 50);
         });
@@ -133,7 +129,7 @@ public class GamePanel extends JPanel implements AppletStub {
      ******************************
      */
     public Canvas getCanvas() {
-        return returnedCanvas;
+        return (Canvas) applet.getComponent(0);
     }
 
     /**

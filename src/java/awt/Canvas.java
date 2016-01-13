@@ -90,6 +90,7 @@ public class Canvas extends Component implements Accessible {
     @Override
     public void paint(Graphics g) {
         g.clearRect(0, 0, width, height);
+        super.paint(g);
     }
 
     @Override
@@ -124,6 +125,10 @@ public class Canvas extends Component implements Accessible {
             accessibleContext = new AccessibleAWTCanvas();
         }
         return accessibleContext;
+    }
+
+    public BufferedImage getScreen() {
+        return debugImage;
     }
 
     protected class AccessibleAWTCanvas extends AccessibleAWTComponent {

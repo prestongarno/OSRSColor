@@ -40,5 +40,9 @@ public class PanelHolder extends JPanel implements Runnable {
         add(game, BorderLayout.CENTER);
         game.start();
     }
+    
+    public GamePanel getGamePanel(){
+        return game;
+    }
 
 }

@@ -1,10 +1,16 @@
 package utilities;
 
+import console.console;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Arrays;
+import java.util.Date;
 import javax.imageio.*;
 import javax.swing.*;
 
@@ -202,13 +208,14 @@ public class ScreenImage {
         }
     }
 
-    public static void saveImage(String name, BufferedImage image) {
-        File outputfile = new File(name);
-
+    public static void saveImage(BufferedImage image) {
+        DateFormat format = new SimpleDateFormat("MM.dd 'at' HH.mmss");
+        File outputfile = new File(format.format(new Date()).toString() + ".png");
+        
         try {
-            ImageIO.write(image, "jpg", outputfile);
+            ImageIO.write(image, "png", outputfile);
         } catch (IOException ex) {
-            System.out.println("Error saving file!");
+            console.log("Error saving file!");
         }
     }
 
