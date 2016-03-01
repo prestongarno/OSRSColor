@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
+import controller.*;
 //import ocr.ocr;
 import resources.SplashScreen;
 
@@ -52,6 +53,7 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
             this.setLayout(new BorderLayout(0, 0));
             loadingScreen = new SplashScreen();
             this.add(loadingScreen, BorderLayout.CENTER);
+            controller.frame.pack();
             //download "jav_config.ws" and find main class
             HTTPSocket socket = new HTTPSocket(world + "/jav_config.ws");
             String lines[] = socket.getPage(null).replaceAll("param=|msg=", "").split("\r|\n|\r\n"); //param=|msg=(.*?)\r|\n|\r\n
@@ -71,6 +73,8 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
             applet.setPreferredSize(new Dimension(width, height));
             this.remove(loadingScreen);
             this.add(applet, BorderLayout.CENTER);
+            this.start();
+            controller.frame.pack();
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error Loading.. Please Check Your Internet Connection.", "Error Loading..", JOptionPane.ERROR_MESSAGE);

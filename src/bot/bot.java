@@ -22,6 +22,10 @@ public class bot implements Runnable {
 
     @Override
     public void run() {
+        this.runBot();
+    }
+
+    private void runBot() {
         
     }
 }
