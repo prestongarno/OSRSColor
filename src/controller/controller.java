@@ -5,13 +5,17 @@
  */
 package controller;
 
+import Actions.MenuBar;
 import bot.bot;
 import console.console;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JPopupMenu;
+import javax.swing.ToolTipManager;
 import loader.GamePanel;
 
 /**
@@ -54,14 +58,10 @@ public final class controller {
         ThreadManager.get(index).start();
     }
 
-    public static void endAllThreads() {
-        for (Thread ThreadManager1 : ThreadManager) {
-            ThreadManager1.stop();
-        }
-    }
-
     public void display() {
         try {
+            JPopupMenu.setDefaultLightWeightPopupEnabled(false);
+            ToolTipManager.sharedInstance().setLightWeightPopupEnabled(false);
             startRobotThread();
             startGameThread();
             frame = new JFrame("OCRScape 0.1");
@@ -72,6 +72,7 @@ public final class controller {
             frame.add(MenuBar.getInstance(), BorderLayout.NORTH);
             frame.add(game, BorderLayout.CENTER);
             frame.add(console.getInstance(), BorderLayout.SOUTH);
+            game.setPreferredSize(new Dimension(1080, 720));
             frame.pack();
             frame.setVisible(true);
         } catch(Exception ex) {
@@ -79,12 +80,15 @@ public final class controller {
         }
 
     }
+    
+    public static void setBotCanvasInstance(){
+        bot.CANVAS = game.getScreen();
+    }
 
     private WindowAdapter onClose = new WindowAdapter() {
         @Override
         public void windowClosing(WindowEvent e) {
             frame.setVisible(false);
-            endAllThreads();
             game.stop();
             System.exit(0);
         }

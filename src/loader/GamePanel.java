@@ -1,5 +1,7 @@
 package loader;
 
+import Actions.Actions;
+import bot.bot;
 import console.console;
 import listener.PaintListener;
 import utilities.*;
@@ -74,8 +76,9 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
             this.remove(loadingScreen);
             this.add(applet, BorderLayout.CENTER);
             this.start();
+            Actions.addActions();
             controller.frame.pack();
-
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error Loading.. Please Check Your Internet Connection.", "Error Loading..", JOptionPane.ERROR_MESSAGE);
         }
@@ -90,7 +93,7 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
      */
     public static void notifyCanvasReady(Canvas canvas) {
         canvas.addPaintListener((PaintListener) g -> {
-
+            controller.setBotCanvasInstance();
             g.setColor(Color.white);
             //g.drawString("This is a Test", 50, 50);
             g.drawString(System.getProperty("user.name"), 50, 50);

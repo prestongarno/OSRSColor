@@ -5,6 +5,8 @@
  */
 package bot;
 
+import Actions.Actions;
+import controller.controller;
 import java.awt.image.BufferedImage;
 
 /**
@@ -17,7 +19,7 @@ public class bot implements Runnable {
     public static BufferedImage CANVAS;
     
     public bot() {
-        
+        bot.CANVAS = null;
     }
 
     @Override

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Actions;
 
 import java.awt.Dimension;
 import javax.swing.JButton;
@@ -19,9 +19,9 @@ public class MenuBar extends JMenuBar {
     
     public static final MenuBar instance = new MenuBar();
     
-    public JMenu Tools;
-    public JMenuItem screenShot;
-    public JButton readTopLeft, saveTopLeft, scan;
+    public static JMenu Tools;
+    public static JMenuItem screenShot;
+    public static JButton readTopLeft, saveTopLeft, scan;
     
     public MenuBar(){
         Tools = new JMenu("Tools");

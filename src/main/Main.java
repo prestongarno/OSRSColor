@@ -3,6 +3,7 @@ package main;
 
 import console.console;
 import controller.controller;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
@@ -35,6 +36,7 @@ public class Main {
             new controller();
         } catch (Exception e) {
             console.log(e);
+            JOptionPane.showMessageDialog(null, e);
         }
     }
 }
