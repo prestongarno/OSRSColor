@@ -5,6 +5,7 @@
  */
 package ScriptLoader;
 
+import ScriptLoader.Actions.*;
 import bot.bot;
 import java.io.File;
 import java.util.ArrayList;
@@ -15,22 +16,28 @@ import java.util.ArrayList;
  */
 public class scriptLoader {
     
-    private ArrayList<String> commands;
+    private ArrayList<String> lines;
+    private ArrayList<OSAction> actions;
     
     public scriptLoader(File f){
-        commands = new ArrayList<>();
+        lines = new ArrayList<>();
+        actions = new ArrayList<>();
         //read the file, then use the logic to call appropriate bot methods
         
     }
     
     private void readCommands(){
-        //logic here
+        //logic here to read commands
     }
     
     private void runScript(){
         bot b = new bot();
         Thread t = new Thread(b);
         b.run();
+    }
+    
+    private OSAction evaluateAction(String line) {
+        return new walk();
     }
     
 }

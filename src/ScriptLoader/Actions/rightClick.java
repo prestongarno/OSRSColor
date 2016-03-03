@@ -3,20 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bot.OSWalker;
+package ScriptLoader.Actions;
 
 /**
  *
  * @author Preston Garno
  */
-public class OSWalker {
-    
-    public OSWalker(){
-        
-    }
-    
-    public void walk(int x, int y) {
-        
-    }
+public class rightClick {
     
 }

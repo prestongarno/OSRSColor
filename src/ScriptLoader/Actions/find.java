@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ScriptLoader;
+package ScriptLoader.Actions;
 
 /**
  *
  * @author Preston Garno
  */
-public abstract class Action {
+public class find {
     
-    public void perform(){
-        
-    }
 }

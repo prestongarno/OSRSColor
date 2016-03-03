@@ -5,7 +5,9 @@
  */
 package bot;
 
+import ScriptLoader.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,10 +25,14 @@ public class bot implements Runnable {
 
     @Override
     public void run() {
-        this.runBot();
+        
     }
 
-    private void runBot() {
+    private void runBot(ArrayList<OSAction> a) {
+        
+        for (OSAction a1 : a) {
+            a1.perform();
+        }
         
     }
 }

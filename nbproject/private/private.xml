@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/bot/bot.java</file>
-            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/java/awt/Canvas.java</file>
+            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/ScriptLoader/scriptLoader.java</file>
+            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/ScriptLoader/Actions/find.java</file>
+            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/ScriptLoader/Actions/rightClick.java</file>
+            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/ScriptLoader/Action.java</file>
+            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/bot/AntiBan/AntiBan.java</file>
             <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/main/Main.java</file>
-            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/loader/GamePanel.java</file>
-            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/Actions/Actions.java</file>
-            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/controller/controller.java</file>
+            <file>file:/C:/Users/Preston%20Garno/Documents/NetBeansProjects/OSRS%20Build%200.1/src/ScriptLoader/Actions/walk.java</file>
         </group>
     </open-files>
 </project-private>

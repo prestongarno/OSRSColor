@@ -6,7 +6,7 @@
 package bot.OCR;
 
 import java.awt.image.BufferedImage;
-import OCR.REGTextScanner.REGTextScanner;
+import bot.OCR.REGTextScanner.REGTextScanner;
 
 /**
  * @author Preston Garno

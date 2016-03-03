@@ -5,6 +5,7 @@
  */
 package GUImenu;
 
+import bot.OCR.REGTextScanner.REGTextScanner;
 import bot.bot;
 import console.console;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,8 @@ public class MenuFunctions {
     
     public static void addActions(){
         MenuBar.screenShot.addActionListener(scr);
+        MenuBar.saveTopLeft.addActionListener(scrTopLeft);
+        MenuBar.readTopLeft.addActionListener(ocrTopLeft);
     }
     
     private static ActionListener scr = new ActionListener() {
@@ -31,6 +34,33 @@ public class MenuFunctions {
                     console.log("Hello, the image you are looking for doesn't exist!");
                 }
             } catch(Exception ex) {
+                console.log(ex);
+            }
+        }
+    };
+    
+    private static ActionListener scrTopLeft = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                ScreenImage.saveImage(bot.CANVAS.getSubimage(4, 4, 380, 16), "topLeft");
+            } catch (Exception ex) {
+                console.log(ex);
+            }
+        }
+    };
+    
+    private static ActionListener ocrTopLeft = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //throwing:
+            //bot.OCR.REGTextScanner.REGTextScanner.doOCR(REGTextScanner.java:45)
+            //GUImenu.MenuFunctions$3.actionPerformed(MenuFunctions.java:58)
+            try {
+                REGTextScanner scanner = new REGTextScanner();
+                console.log(scanner.doOCR(bot.CANVAS.getSubimage(4, 4, 380, 16)));
+            } catch (Exception ex) {
+                console.log(ex.toString());
                 console.log(ex);
             }
         }
