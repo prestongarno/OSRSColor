@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OCR;
+package bot.OCR;
 
 import java.awt.image.BufferedImage;
 import OCR.REGTextScanner.REGTextScanner;

@@ -3,12 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OCR;
+package bot.OSWalker;
 
 /**
  *
- * @author pgarno
+ * @author Preston Garno
  */
-public class antiRandom {
+public class OSWalker {
+    
+    public OSWalker(){
+        
+    }
+    
+    public void walk(int x, int y) {
+        
+    }
     
 }

@@ -1,6 +1,6 @@
 package loader;
 
-import Actions.Actions;
+import GUImenu.MenuFunctions;
 import bot.bot;
 import console.console;
 import listener.PaintListener;
@@ -76,7 +76,7 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
             this.remove(loadingScreen);
             this.add(applet, BorderLayout.CENTER);
             this.start();
-            Actions.addActions();
+            MenuFunctions.addActions();
             controller.frame.pack();
             
         } catch (Exception ex) {

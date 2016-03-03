@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Actions;
+package GUImenu;
 
 import bot.bot;
 import console.console;
@@ -15,7 +15,7 @@ import utilities.ScreenImage;
  *
  * @author Preston Garno
  */
-public class Actions {
+public class MenuFunctions {
     
     public static void addActions(){
         MenuBar.screenShot.addActionListener(scr);

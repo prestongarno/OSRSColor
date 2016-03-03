@@ -5,7 +5,7 @@
  */
 package controller;
 
-import Actions.MenuBar;
+import GUImenu.MenuBar;
 import bot.bot;
 import console.console;
 import java.awt.BorderLayout;
@@ -56,6 +56,12 @@ public final class controller {
 
     public static void startThread(int index) {
         ThreadManager.get(index).start();
+    }
+    
+    
+    //this is the static class to pass all actions that are to be done to the game
+    public static void doAction(){
+        
     }
 
     public void display() {
