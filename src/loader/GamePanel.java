@@ -1,6 +1,7 @@
 package loader;
 
 import GUImenu.MenuFunctions;
+import Overlay.*;
 import bot.bot;
 import console.console;
 import listener.PaintListener;
@@ -33,7 +34,9 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
     private URL codebase, documentBase;
     private SplashScreen loadingScreen;
 
-    public GamePanel() {};
+    public GamePanel() {
+
+    };
     
     @Override
     public void run() {
@@ -96,9 +99,8 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
     public static void notifyCanvasReady(Canvas canvas) {
         canvas.addPaintListener((PaintListener) g -> {
             controller.setBotCanvasInstance();
-            g.setColor(Color.white);
-            //g.drawString("This is a Test", 50, 50);
-            g.drawString(System.getProperty("user.name"), 50, 50);
+            
+            canvasOverlay.getInstance().drawAll(g);
         });
     }
 
