@@ -5,7 +5,6 @@
  */
 package bot.OCR.REGTextScanner;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -13,7 +12,6 @@ import java.util.Arrays;
  * @author Preston Garno
  */
 public class RegValues {
-
     /**
      * Array with number of pixels in each letter
      */
@@ -216,75 +214,5 @@ public class RegValues {
             //throw ex;
             return '~';
         }
-
     }
-
-    public static final ArrayList<int[]> listOfLetters = new ArrayList<int[]>() {
-        {
-            add(dash);
-            add(forwardSlash);
-            add(underScore);
-            add(zero);
-            add(one);
-            add(two);
-            add(three);
-            add(four);
-            add(five);
-            add(six);
-            add(seven);
-            add(eight);
-            add(nine);
-            add(a);
-            add(Acap);
-            add(b);
-            add(Bcap);
-            add(c);
-            add(Ccap);
-            add(d);
-            add(Dcap);
-            add(e);
-            add(Ecap);
-            add(f);
-            add(Fcap);
-            add(g);
-            add(Gcap);
-            add(h);
-            add(Hcap);
-            add(i);
-            add(Icap);
-            add(J);
-            add(Jcap);
-            add(k);
-            add(Kcap);
-            add(l);
-            add(Lcap);
-            add(m);
-            add(Mcap);
-            add(n);
-            add(Ncap);
-            add(o);
-            add(Ocap);
-            add(p);
-            add(Pcap);
-            add(q);
-            add(Qcap);
-            add(r);
-            add(Rcap);
-            add(s);
-            add(Scap);
-            add(t);
-            add(Tcap);
-            add(u);
-            add(Ucap);
-            add(v);
-            add(Vcap);
-            add(W);
-            add(Wcap);
-            add(x);
-            add(y);
-            add(Ycap);
-            add(z);
-            add(Zcap);
-        }
-    };
 }

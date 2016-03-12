@@ -1,5 +1,6 @@
 package bot.OCR.REGTextScanner;
 
+import console.console;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -15,8 +16,27 @@ public class REGTextScanner {
     private int HEIGHT;
     private int WIDTH;
     private int currentPosition;
+    
+    //colors for matching text
+    private Color whiteMAX;
+    private Color whiteMIN;
+    private Color cyanMAX;
+    private Color cyanMIN;
+    private Color bronzeMAX;
+    private Color bronzeMIN;
+    private Color yellowMAX;
+    private Color yellowMIN;
 
     public REGTextScanner() {
+        this.whiteMAX = new Color(255, 255, 255);
+        this.whiteMIN = new Color(196, 196, 196);
+        this.cyanMAX = new Color(59, 248, 247);
+        this.cyanMIN = new Color(30, 193, 191);
+        this.bronzeMAX = new Color(248, 155, 90);
+        this.bronzeMIN = new Color(190, 100, 45);
+        this.yellowMAX = new Color(246, 243, 75);
+        this.yellowMIN = new Color(213, 211, 54);
+        
         currentPosition = 0;
     }
 
@@ -46,11 +66,10 @@ public class REGTextScanner {
 
             result = result + character;
             currentPosition = getNextLetter();
-            //System.out.println("Old POS: " + oldPOS + " Current: " + currentPosition);
+
             if((currentPosition - oldPOS) > 4 && (currentPosition - oldPOS) < 8) {
                 result = result + " ";
             }
-            //System.out.println(result);
         }
 
         return result;
@@ -80,7 +99,7 @@ public class REGTextScanner {
                 y = 0;
                 while (y < HEIGHT && startPoint == null) {
                     Color current = new Color(screenGrab.getRGB(x, y));
-                    if (current.getRed() > 194 && current.getBlue() > 194 && current.getGreen() > 194) {
+                    if (matchesAnyKnownFontColors(current)) {
                         //Find the starting point of the Text
                         this.startPoint = new Point(x, y);
                     }
@@ -101,7 +120,7 @@ public class REGTextScanner {
         for (int x = currentPosition; x < screenGrab.getWidth(); x++) {
             for (int y = 0; y<screenGrab.getHeight(); y++){
                 current = new Color(screenGrab.getRGB(x, y));
-                if (current.getRed() > 194 && current.getBlue() > 194 && current.getGreen() > 194) {
+                if (matchesAnyKnownFontColors(current)) {
                     xValue = x;
                     return xValue;
                 }
@@ -115,12 +134,58 @@ public class REGTextScanner {
         int numberOfMatches = 0;
         for (int y = 0; y < screenGrab.getHeight(); y++) {
             Color current = new Color(screenGrab.getRGB(x, y));
-            if (current.getRed() > 196 && current.getBlue() > 196 && current.getGreen() > 196) {
-                //System.out.println("Match found");
+            if (matchesAnyKnownFontColors(current)) {
                 numberOfMatches++;
             }
         }
         return numberOfMatches;
+    }
+    
+    private boolean matchesAnyKnownFontColors(Color current) {
+        if (isWhite(current) || isCyan(current) || isBronze(current) || isYellow(current)) {
+            return true;
+        }
+        else { return false; }
+    }
+    
+    private boolean isWhite(Color current){
+        if (isInRange(current, whiteMAX, whiteMIN)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    private boolean isCyan(Color current) {
+        if (isInRange(current, cyanMAX, cyanMIN)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    private boolean isBronze(Color current) {
+        if (isInRange(current, bronzeMAX, bronzeMIN)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isYellow(Color current) {
+        if (isInRange(current, yellowMAX, yellowMIN)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    private boolean isInRange(Color target, Color MAX, Color MIN) {
+        if (target.getRed() > MIN.getRed() && target.getBlue() > MIN.getBlue() && target.getGreen() > MIN.getGreen() && target.getRed() < MAX.getRed() && target.getBlue() < MAX.getBlue() && target.getGreen() < MAX.getGreen()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
