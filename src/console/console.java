@@ -35,10 +35,9 @@ public class console extends JPanel {
         textBox.setEditable(false);
 
         HUD = new JScrollPane(textBox);
-        HUD.setSize(new Dimension(765, 100));
-        HUD.setSize(new Dimension(765, 100));
+        HUD.setSize(new Dimension(600, 150));
 
-        input = new JTextField(765);
+        input = new JTextField(600);
 
         add(HUD, BorderLayout.CENTER);
         
@@ -66,7 +65,7 @@ public class console extends JPanel {
 
         add(input, BorderLayout.SOUTH);
 
-        setPreferredSize(new Dimension(765, 115));
+        setPreferredSize(new Dimension(600, 150));
     }
 
     public static void log(String message) {

@@ -53,9 +53,6 @@ public class MenuFunctions {
     private static ActionListener ocrTopLeft = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            //throwing:
-            //bot.OCR.REGTextScanner.REGTextScanner.doOCR(REGTextScanner.java:45)
-            //GUImenu.MenuFunctions$3.actionPerformed(MenuFunctions.java:58)
             try {
                 REGTextScanner scanner = new REGTextScanner();
                 console.log(scanner.doOCR(bot.CANVAS.getSubimage(4, 4, 380, 16)));

@@ -37,6 +37,8 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
     
     @Override
     public void run() {
+        //this.create("http://oldschool.runescape.com", 765, 553);
+        
         this.create("http://oldschool.runescape.com", 765, 553);
     }
 

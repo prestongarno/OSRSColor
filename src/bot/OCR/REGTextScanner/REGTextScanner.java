@@ -29,11 +29,11 @@ public class REGTextScanner {
     public REGTextScanner() {
         this.whiteMAX = new Color(255, 255, 255);
         this.whiteMIN = new Color(196, 196, 196);
-        this.cyanMAX = new Color(59, 248, 247);
-        this.cyanMIN = new Color(30, 193, 191);
+        this.cyanMAX = new Color(60, 250, 250);
+        this.cyanMIN = new Color(0, 190, 190);
         this.bronzeMAX = new Color(248, 155, 90);
         this.bronzeMIN = new Color(190, 100, 45);
-        this.yellowMAX = new Color(246, 243, 35);
+        this.yellowMAX = new Color(250, 250, 40);
         this.yellowMIN = new Color(200, 200, 0);
         
         currentPosition = 0;

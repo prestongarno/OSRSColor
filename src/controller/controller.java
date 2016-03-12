@@ -78,7 +78,7 @@ public final class controller {
             frame.add(MenuBar.getInstance(), BorderLayout.NORTH);
             frame.add(game, BorderLayout.CENTER);
             frame.add(console.getInstance(), BorderLayout.SOUTH);
-            game.setPreferredSize(new Dimension(1080, 720));
+            game.setPreferredSize(new Dimension(770, 505));
             frame.pack();
             frame.setVisible(true);
         } catch(Exception ex) {
