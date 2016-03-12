@@ -1,6 +1,5 @@
 package bot.OCR.REGTextScanner;
 
-import console.console;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -34,8 +33,8 @@ public class REGTextScanner {
         this.cyanMIN = new Color(30, 193, 191);
         this.bronzeMAX = new Color(248, 155, 90);
         this.bronzeMIN = new Color(190, 100, 45);
-        this.yellowMAX = new Color(246, 243, 75);
-        this.yellowMIN = new Color(213, 211, 54);
+        this.yellowMAX = new Color(246, 243, 35);
+        this.yellowMIN = new Color(200, 200, 0);
         
         currentPosition = 0;
     }
@@ -142,50 +141,26 @@ public class REGTextScanner {
     }
     
     private boolean matchesAnyKnownFontColors(Color current) {
-        if (isWhite(current) || isCyan(current) || isBronze(current) || isYellow(current)) {
-            return true;
-        }
-        else { return false; }
+        return isWhite(current) || isCyan(current) || isBronze(current) || isYellow(current);
     }
     
     private boolean isWhite(Color current){
-        if (isInRange(current, whiteMAX, whiteMIN)) {
-            return true;
-        } else {
-            return false;
-        }
+        return isInRange(current, whiteMAX, whiteMIN);
     }
     
     private boolean isCyan(Color current) {
-        if (isInRange(current, cyanMAX, cyanMIN)) {
-            return true;
-        } else {
-            return false;
-        }
+        return isInRange(current, cyanMAX, cyanMIN);
     }
     
     private boolean isBronze(Color current) {
-        if (isInRange(current, bronzeMAX, bronzeMIN)) {
-            return true;
-        } else {
-            return false;
-        }
+        return isInRange(current, bronzeMAX, bronzeMIN);
     }
 
     private boolean isYellow(Color current) {
-        if (isInRange(current, yellowMAX, yellowMIN)) {
-            return true;
-        } else {
-            return false;
-        }
+        return isInRange(current, yellowMAX, yellowMIN);
     }
     
     private boolean isInRange(Color target, Color MAX, Color MIN) {
-        if (target.getRed() > MIN.getRed() && target.getBlue() > MIN.getBlue() && target.getGreen() > MIN.getGreen() && target.getRed() < MAX.getRed() && target.getBlue() < MAX.getBlue() && target.getGreen() < MAX.getGreen()) {
-            return true;
-        } else {
-            return false;
-        }
+        return target.getRed() >= MIN.getRed() && target.getBlue() >= MIN.getBlue() && target.getGreen() >= MIN.getGreen() && target.getRed() <= MAX.getRed() && target.getBlue() <= MAX.getBlue() && target.getGreen() <= MAX.getGreen();
     }
-
 }
