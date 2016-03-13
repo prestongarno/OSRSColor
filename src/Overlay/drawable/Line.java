@@ -9,6 +9,7 @@ import GUImenu.MenuBar;
 import console.console;
 import java.awt.Color;
 import java.awt.Graphics;
+import resources.dir;
 
 /**
  *
@@ -18,20 +19,16 @@ public class Line extends drawable {
 
     private int x1, x2, y1, y2;
     Color c;
+    private String name;
 
-    //I'm too lazy to write the name of each variable when
-    //changing up a million instances of this object
-    //So I'm writing code to to write code
-    private String description;
-
-    public Line(int x1, int y1, int x2, int y2, Color c) {
+    public Line(int x1, int y1, int x2, int y2, Color c, String name) {
         this.c = c;
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
 
-        this.description = "none";
+        this.name = "none";
     }
 
     @Override
@@ -73,14 +70,6 @@ public class Line extends drawable {
         return y2;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDesc(String description) {
-        this.description = description;
-    }
-
     public void shiftDown(int amount) {
         try {
             y1 = y1 + amount;
@@ -115,5 +104,39 @@ public class Line extends drawable {
         } catch (Exception nfex) {
             console.log(nfex);
         }
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    @Override
+    public void setToString(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void move(int amount, dir d) {
+        if (d == dir.UP) {
+            y1 = y1 - amount;
+            y2 = y2 - amount;
+        } else if (d == dir.DOWN) {
+            y1 = y1 + amount;
+            y2 = y2 + amount;
+        } else if (d == dir.LEFT) {
+            x1 = x1 - amount;
+            x2 = x2 - amount;
+        } else if (d == dir.RIGHT) {
+            x1 = x1 + amount;
+            x2 = x2 + amount;
+        }
+        
+        console.log("private Line " + name + " = new Line("+this.x1+", "+this.y1+", "+this.x2+", "+this.y2+", Color.green, " + name + ");");
+    }
+    
+    public String printConstructorCall(){
+        return ("private Line " + name + " = new Line("+this.x1+", "+this.y1+", "+this.x2+", "+this.y2+", Color.green, " + name + ");");
+
     }
 }

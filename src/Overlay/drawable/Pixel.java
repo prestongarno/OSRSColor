@@ -7,6 +7,7 @@ package Overlay.drawable;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import resources.dir;
 
 /**
  *
@@ -20,6 +21,21 @@ public class Pixel extends drawable {
 
     @Override
     public void draw(Graphics g) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setToString(String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void move(int amount, dir d) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -6,6 +6,7 @@
 package Overlay.drawable;
 
 import java.awt.Graphics;
+import resources.dir;
 
 /**
  *
@@ -13,9 +14,18 @@ import java.awt.Graphics;
  */
 public abstract class drawable {
     
+    private String name;
+    
     public drawable(){
         
     }
     
     public abstract void draw(Graphics g);
+    
+    public abstract void move(int amount, dir d);
+    
+    @Override
+    public abstract String toString();
+    
+    public abstract void setToString(String name);
 }

@@ -22,7 +22,7 @@ public class MenuBar extends JMenuBar {
     public static final MenuBar instance = new MenuBar();
     
     public static JMenu Tools;
-    public static JMenuItem screenShot, showGrid;
+    public static JMenuItem screenShot, showGrid, printGridCoordinates;
     public static JButton readTopLeft, saveTopLeft, scan;
     
     /***********************************
@@ -30,7 +30,7 @@ public class MenuBar extends JMenuBar {
      *      DEBUG BUTTONS ONLY HERE
      * 
      * ********************************/
-    public static JButton shiftUp, shiftDown;
+    public static JButton shiftUp, shiftDown, shiftRight, shiftLeft;
     public static JTextField howMuchShift;
     public static JTextField targetLine;
     /**********************************
@@ -42,6 +42,7 @@ public class MenuBar extends JMenuBar {
         
         screenShot = new JMenuItem("ScreenShot");
         showGrid = new JMenuItem("Show Coord. Grid");
+        printGridCoordinates = new JMenuItem("Print grid coord.");
         
         readTopLeft = new JButton("OCR topLeft");
         saveTopLeft = new JButton("Save topLeft");
@@ -49,6 +50,7 @@ public class MenuBar extends JMenuBar {
         
         Tools.add(screenShot);
         Tools.add(showGrid);
+        Tools.add(printGridCoordinates);
         
         add(Tools);
         add(readTopLeft);
@@ -58,13 +60,17 @@ public class MenuBar extends JMenuBar {
         //debug
         shiftUp = new JButton("^");
         shiftDown = new JButton("v");
+        shiftLeft = new JButton("<-");
+        shiftRight = new JButton("->");
         howMuchShift = new JTextField("0");
         howMuchShift.setColumns(5);
         targetLine = new JTextField("x1");
         targetLine.setColumns(5);
         
+        add(shiftLeft);
         add(shiftUp);
         add(shiftDown);
+        add(shiftRight);
         add(new JLabel("Target:"));
         add(targetLine);
         add(new JLabel("Amnt:"));
