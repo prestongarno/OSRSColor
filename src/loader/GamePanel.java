@@ -2,8 +2,6 @@ package loader;
 
 import GUImenu.MenuFunctions;
 import Overlay.*;
-import bot.bot;
-import console.console;
 import listener.PaintListener;
 import utilities.*;
 import javax.swing.*;
