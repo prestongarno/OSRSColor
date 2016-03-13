@@ -7,6 +7,7 @@ package GUImenu;
 
 import java.awt.Dimension;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -31,6 +32,7 @@ public class MenuBar extends JMenuBar {
      * ********************************/
     public static JButton shiftUp, shiftDown;
     public static JTextField howMuchShift;
+    public static JTextField targetLine;
     /**********************************
      * 
      *********************************/
@@ -58,9 +60,14 @@ public class MenuBar extends JMenuBar {
         shiftDown = new JButton("v");
         howMuchShift = new JTextField("0");
         howMuchShift.setColumns(5);
+        targetLine = new JTextField("x1");
+        targetLine.setColumns(5);
         
         add(shiftUp);
         add(shiftDown);
+        add(new JLabel("Target:"));
+        add(targetLine);
+        add(new JLabel("Amnt:"));
         add(howMuchShift);
     }
     

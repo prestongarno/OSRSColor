@@ -18,7 +18,7 @@ public class Line extends drawable {
 
     private int x1, x2, y1, y2;
     Color c;
-    
+
     //I'm too lazy to write the name of each variable when
     //changing up a million instances of this object
     //So I'm writing code to to write code
@@ -30,7 +30,7 @@ public class Line extends drawable {
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
-        
+
         this.description = "none";
     }
 
@@ -72,38 +72,47 @@ public class Line extends drawable {
     public int getY2() {
         return y2;
     }
-    
-    public String getDescription(){
+
+    public String getDescription() {
         return description;
     }
-    
-    public void setDesc(String description){
+
+    public void setDesc(String description) {
         this.description = description;
     }
 
-    public void shiftDown() {
+    public void shiftDown(int amount) {
         try {
-            y1 = y1 + Integer.parseInt(MenuBar.howMuchShift.getText());
-            y2 = y2 + Integer.parseInt(MenuBar.howMuchShift.getText());
-        } catch (NumberFormatException nfex) {
+            y1 = y1 + amount;
+            y2 = y2 + amount;
+        } catch (Exception nfex) {
             console.log(nfex);
         }
     }
 
-    public void shiftUp() {
+    public void shiftUp(int amount) {
         try {
-            y1 = y1 - Integer.parseInt(MenuBar.howMuchShift.getText());
-            y2 = y2 - Integer.parseInt(MenuBar.howMuchShift.getText());
-        } catch (NumberFormatException nfex) {
+            y1 = y1 - amount;
+            y2 = y2 - amount;
+        } catch (Exception nfex) {
             console.log(nfex);
         }
     }
 
-    public void shiftRight() {
+    public void shiftRight(int amount) {
         try {
-            x1 = x1 + Integer.parseInt(MenuBar.howMuchShift.getText());
-            x2 = x2 + Integer.parseInt(MenuBar.howMuchShift.getText());
-        } catch (NumberFormatException nfex) {
+            x1 = x1 + amount;
+            x2 = x2 + amount;
+        } catch (Exception nfex) {
+            console.log(nfex);
+        }
+    }
+
+    public void shiftLeft(int amount) {
+        try {
+            x1 = x1 - amount;
+            x2 = x2 - amount;
+        } catch (Exception nfex) {
             console.log(nfex);
         }
     }

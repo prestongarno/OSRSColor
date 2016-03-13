@@ -108,7 +108,11 @@ public class grid extends drawable {
             console.log("/*************************************/");
             console.log("New Values: ");
             for(int i = 0; i < 13; i++) {
-                grid.get(i).shiftUp();
+                try {
+                    grid.get(i).shiftUp(Integer.parseInt(MenuBar.howMuchShift.getText()));
+                } catch (NumberFormatException nfx) {
+                    console.log(nfx);
+                }
                 console.log("private  void " + grid.get(i).getDescription() + " = new Line(" + grid.get(i).getX1() + ", " + grid.get(i).getY1() + ", " + grid.get(i).getX2() + ", " + grid.get(i).getX2());
             }
             console.log("/*************************************/");
@@ -121,7 +125,11 @@ public class grid extends drawable {
             console.log("/*************************************/");
             console.log("New Values: ");
             for(int i = 0; i < 13; i++) {
-                grid.get(i).shiftDown();
+                try {
+                    grid.get(i).shiftDown(Integer.parseInt(MenuBar.howMuchShift.getText()));
+                } catch (NumberFormatException nfx) {
+                    console.log(nfx);
+                }
                 console.log("private  void " + grid.get(i).getDescription() + " = new Line(" + grid.get(i).getX1() + ", " + grid.get(i).getY1() + ", " + grid.get(i).getX2() + ", " + grid.get(i).getX2());
             }
             console.log("/*************************************/");
@@ -134,10 +142,35 @@ public class grid extends drawable {
             console.log("/*************************************/");
             console.log("New Values: ");
             for(int i = 13; i < 23; i++) {
-                grid.get(i).shiftRight();
+                try {
+                    grid.get(i).shiftRight(Integer.parseInt(MenuBar.howMuchShift.getText()));
+                } catch (NumberFormatException nfx) {
+                    console.log(nfx);
+                }
                 console.log("private  void " + grid.get(i).getDescription() + " = new Line(" + grid.get(i).getX1() + ", " + grid.get(i).getY1() + ", " + grid.get(i).getX2() + ", " + grid.get(i).getX2());
             }
             console.log("/*************************************/");
         }
     };
+    
+        private ActionListener shiftGridLeft = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            console.log("/*************************************/");
+            console.log("New Values: ");
+            for(int i = 13; i < 23; i++) {
+                try {
+                    grid.get(i).shiftRight(Integer.parseInt(MenuBar.howMuchShift.getText()));
+                } catch (NumberFormatException nfx) {
+                    console.log(nfx);
+                }
+                console.log("private  void " + grid.get(i).getDescription() + " = new Line(" + grid.get(i).getX1() + ", " + grid.get(i).getY1() + ", " + grid.get(i).getX2() + ", " + grid.get(i).getX2());
+            }
+            console.log("/*************************************/");
+        }
+    };
+    
+    private void shiftTarget(Line l){
+        
+    }
 }
