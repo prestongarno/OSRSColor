@@ -5,7 +5,7 @@
  */
 package Overlay;
 
-import GUImenu.MenuBar;
+import GUImenus.MenuBar;
 import Overlay.drawable.*;
 import console.console;
 import java.awt.Color;

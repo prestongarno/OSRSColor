@@ -44,6 +44,5 @@ public class bot implements Runnable {
         for (OSAction a1 : a) {
             a1.perform();
         }
-        
     }
 }

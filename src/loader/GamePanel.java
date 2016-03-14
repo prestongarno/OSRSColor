@@ -1,6 +1,6 @@
 package loader;
 
-import GUImenu.MenuFunctions;
+import GUImenus.MenuFunctions;
 import Overlay.*;
 import listener.PaintListener;
 import utilities.*;

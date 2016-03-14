@@ -5,7 +5,7 @@
  */
 package Overlay.drawable;
 
-import GUImenu.MenuBar;
+import GUImenus.MenuBar;
 import console.console;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -28,7 +28,7 @@ public class Line extends drawable {
         this.x2 = x2;
         this.y2 = y2;
 
-        this.name = "none";
+        this.name = name;
     }
 
     @Override

@@ -5,12 +5,31 @@
  */
 package ScriptLoader;
 
+import controller.controller;
+import java.applet.Applet;
+import java.awt.AWTEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+
 /**
  * @author Preston Garno
  */
-public abstract class OSAction {
+public abstract class OSAction{
+    
+    protected Applet app;
+    
+    ActionEvent DankMeme;
+    
+    public OSAction(){
+        this.app = controller.getApplet();
+    }
     
     public abstract void perform();
+    
+    public void click(int x, int y){
+        
+    }
     
     public void clickInBox(int x, int y, int width, int height) {
         
@@ -20,29 +39,30 @@ public abstract class OSAction {
         
     }
     
-    public void selectTile(int x, int y){
-        
-    }
-        
-    
     public void delay(int milliseconds) {
         
     }
     
-    public void faceNorth(){
+    public void pressKey(KeyEvent k) {
         
     }
     
-    public void gotoStandardView(){
-        
-    }
-    
-    public void updatePlayer(){
-        
-    }
-    
-    public void readInventory(){
-        
-    }
-    
+    //taken from old loader :) 
+//    public void resetView(Applet applet){
+//    applet.getComponent(0).dispatchEvent(new MouseEvent(applet,
+//            MouseEvent.MOUSE_PRESSED,
+//            System.currentTimeMillis() + 10,
+//            MouseEvent.BUTTON1,
+//           canvas.getWidth() - 162, 20,
+//            0,
+//            false));
+//
+//    applet.getComponent(0).dispatchEvent(new MouseEvent(applet,
+//            MouseEvent.MOUSE_RELEASED,
+//            System.currentTimeMillis() + 10,
+//            MouseEvent.BUTTON1,
+//           canvas.getWidth() - 162, 20,
+//            0,
+//            false));
+//}
 }

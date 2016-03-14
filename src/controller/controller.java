@@ -5,9 +5,12 @@
  */
 package controller;
 
-import GUImenu.MenuBar;
+import GUImenus.MenuBar;
+import ScriptLoader.OSAction;
 import bot.bot;
 import console.console;
+import java.applet.Applet;
+import java.awt.AWTEvent;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
@@ -91,14 +94,6 @@ public final class controller {
         ThreadManager.get(index).start();
     }
     
-    
-    /**
-     * Don't think we need this method
-     */
-    public static void doAction(){
-        
-    }
-    
     /**
      * Show the application
      */
@@ -143,4 +138,8 @@ public final class controller {
             System.exit(0);
         }
     };
+    
+    public static Applet getApplet(){
+        return game.getApplet();
+    }
 }

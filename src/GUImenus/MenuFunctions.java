@@ -1,5 +1,5 @@
 
-package GUImenu;
+package GUImenus;
 
 import Overlay.canvasOverlay;
 import bot.OCR.REGTextScanner.REGTextScanner;
