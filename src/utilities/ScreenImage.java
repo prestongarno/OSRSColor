@@ -5,14 +5,11 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Date;
 import javax.imageio.*;
-import javax.swing.*;
 
 /*
  *  Convenience class to create and optionally save to a file a
@@ -208,10 +205,9 @@ public class ScreenImage {
         }
     }
 
-    public static void saveImage(BufferedImage image) {
-        DateFormat format = new SimpleDateFormat("MM.dd 'at' HH.mmss");
-        File outputfile = new File(format.format(new Date()).toString() + ".png");
-        
+    public static void saveImage(BufferedImage image, String name) {
+        DateFormat format = new SimpleDateFormat("MM-dd HH.mm.ss ");
+        File outputfile = new File(format.format(new Date()) + name + ".png");
         try {
             ImageIO.write(image, "png", outputfile);
         } catch (IOException ex) {

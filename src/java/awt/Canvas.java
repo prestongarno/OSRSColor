@@ -1,6 +1,8 @@
 package java.awt;
 
-import listeners.PaintListener;
+import bot.bot;
+import console.console;
+import listener.PaintListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.peer.CanvasPeer;
@@ -26,6 +28,7 @@ public class Canvas extends Component implements Accessible {
      */
     public Canvas(){
         GamePanel.notifyCanvasReady(this);
+        console.log("Canvas constructor called");
     }
     
     /**

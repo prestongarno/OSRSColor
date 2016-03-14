@@ -1,24 +1,28 @@
 package loader;
 
-import console.console;
-import listeners.PaintListener;
+import GUImenus.MenuFunctions;
+import Overlay.*;
+import listener.PaintListener;
 import utilities.*;
 import javax.swing.*;
 import java.applet.Applet;
 import java.applet.AppletContext;
 import java.applet.AppletStub;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
-import ocr.ocr;
+import controller.*;
+//import ocr.ocr;
+import resources.SplashScreen;
 
 /**
  * @author Preston Garno
  *
  * JPanel that loads and starts the game applet
  */
-public class GamePanel extends JPanel implements AppletStub {
+public class GamePanel extends JPanel implements AppletStub, Runnable {
 
     private static final long serialVersionUID = 5627929030422355843L;
     private final HashMap<String, String> parameters = new HashMap<>();
@@ -26,21 +30,35 @@ public class GamePanel extends JPanel implements AppletStub {
     public Applet applet;
     private URLClassLoader loader;
     private URL codebase, documentBase;
-    private static Canvas returnedCanvas = null;
+    private SplashScreen loadingScreen;
+
+    public GamePanel() {
+
+    };
+    
+    @Override
+    public void run() {
+        //this.create("http://oldschool.runescape.com", 765, 553);
+        
+        this.create("http://oldschool.runescape.com", 765, 553);
+    }
 
     /**
-     * ******************************
      * Public constructor, loads and adds the applet to the panel
      *
      * @param world the specified world to start the game in
      * @param width width of the applet
      * @param height height of the applet
-     ******************************
      */
-    public GamePanel(String world, int width, int height) {
+    public void create(String world, int width, int height) {
+
         try {
-            //download "jav_config.ws" and find main class
+
             this.setLayout(new BorderLayout(0, 0));
+            loadingScreen = new SplashScreen();
+            this.add(loadingScreen, BorderLayout.CENTER);
+            controller.frame.pack();
+            //download "jav_config.ws" and find main class
             HTTPSocket socket = new HTTPSocket(world + "/jav_config.ws");
             String lines[] = socket.getPage(null).replaceAll("param=|msg=", "").split("\r|\n|\r\n"); //param=|msg=(.*?)\r|\n|\r\n
 
@@ -57,30 +75,35 @@ public class GamePanel extends JPanel implements AppletStub {
             applet = (Applet) loader.loadClass(parameters.get("initial_class").replace(".class", "")).newInstance();
             applet.setStub(this);
             applet.setPreferredSize(new Dimension(width, height));
+            this.remove(loadingScreen);
             this.add(applet, BorderLayout.CENTER);
-
+            this.start();
+            MenuFunctions.addActions();
+            controller.frame.pack();
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error Loading.. Please Check Your Internet Connection.", "Error Loading..", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    /******************************
+
+    /**
+     * ****************************
      * Get the canvas and draws on it
-     * 
+     *
      * @param canvas the current canvas instance
-     ******************************/
+     *****************************
+     */
     public static void notifyCanvasReady(Canvas canvas) {
-        returnedCanvas = canvas;
         canvas.addPaintListener((PaintListener) g -> {
-            g.setColor(Color.white);
-            g.drawString("This is a Test", 50, 50);
+            controller.setBotCanvasInstance();
+            
+            canvasOverlay.getInstance().drawAll(g);
         });
     }
 
     /**
-     * ******************************
-     * Starts the applet
-     ******************************
+     * 
+     * Starts the applet 
      */
     public void start() {
         if (applet != null) {
@@ -98,9 +121,8 @@ public class GamePanel extends JPanel implements AppletStub {
     }
 
     /**
-     * ******************************
-     * Stops the applet, calls destroy()
-     ******************************
+     * 
+     * Stops the applet, calls destroy() 
      */
     public void stop() {
         if (applet != null) {
@@ -114,8 +136,7 @@ public class GamePanel extends JPanel implements AppletStub {
      * ******************************
      * Method to get the current instance of the applet
      *
-     * @return applet the game applet
-     ******************************
+     * @return applet the game applet 
      */
     public Applet getApplet() {
         return applet;
@@ -125,8 +146,7 @@ public class GamePanel extends JPanel implements AppletStub {
      * ******************************
      * Gets and returns the canvas from the applet
      *
-     * @return canvas the game canvas
-     ******************************
+     * @return canvas the game canvas 
      */
     public Canvas getCanvas() {
         return (Canvas) applet.getComponent(0);
@@ -136,8 +156,7 @@ public class GamePanel extends JPanel implements AppletStub {
      * ******************************
      * Returns the classloader
      *
-     * @return loader the class loader
-     ******************************
+     * @return loader the class loader 
      */
     public ClassLoader getClassLoader() {
         return loader;
@@ -171,6 +190,10 @@ public class GamePanel extends JPanel implements AppletStub {
     @Override
     public void appletResize(int width, int height) {
         applet.setSize(width, height);
+    }
+
+    public BufferedImage getScreen() {
+        return this.getCanvas().getScreen();
     }
 
 }

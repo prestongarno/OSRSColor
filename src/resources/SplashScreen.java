@@ -17,9 +17,13 @@ import utilities.Util;
  * @author Preston Garno
  */
 public class SplashScreen extends JPanel {
-    private static JLabel splash = new JLabel(Util.loadIcon("http://www.runescape.com/img/rsp777/oldschool_ani.gif"));
+    private JLabel splash;
     
+    /**
+     * The classic old school runescape loading screen!
+     */
     public SplashScreen(){
+        splash = new JLabel(Util.loadIcon("http://www.runescape.com/img/rsp777/oldschool_ani.gif"));
         setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(765, 553));
         setBackground(Color.BLACK);

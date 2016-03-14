@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package main;
 
 import console.console;
+import controller.controller;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
@@ -32,12 +30,13 @@ public class Main {
                 }
             }
         } catch (Exception e) {
-            console.log(e);
+            
         }
         try {
-            new Frame();
+            new controller();
         } catch (Exception e) {
             console.log(e);
+            JOptionPane.showMessageDialog(null, e);
         }
     }
 }
