@@ -10,11 +10,14 @@ import java.awt.event.ActionListener;
 import utilities.ScreenImage;
 
 /**
- *
  * @author Preston Garno
  */
 public class MenuFunctions {
     
+    /**
+     * Static method that adds basic actions to the menu, any that don't use
+     * objects, such as screenshots etc
+     */
     public static void addActions(){
         MenuBar.screenShot.addActionListener(scr);
         MenuBar.showGrid.addActionListener(showGrid);
@@ -22,6 +25,9 @@ public class MenuFunctions {
         MenuBar.readTopLeft.addActionListener(ocrTopLeft);
     }
     
+    /**
+     * Screenshots the current game canvas
+     */
     private static ActionListener scr = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -37,6 +43,9 @@ public class MenuFunctions {
         }
     };
     
+    /**
+     * Screenshots the top left of the canvas for OCR testing
+     */
     private static ActionListener scrTopLeft = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -48,6 +57,9 @@ public class MenuFunctions {
         }
     };
     
+    /**
+     * Perform OCR on the top left text of the screen
+     */
     private static ActionListener ocrTopLeft = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -61,6 +73,9 @@ public class MenuFunctions {
         }
     };
     
+    /**
+     * Changes SHOW_OVERLAY boolean in the grid class, displays and hides it
+     */
     private static ActionListener showGrid = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {

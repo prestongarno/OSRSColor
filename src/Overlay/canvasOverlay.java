@@ -21,27 +21,53 @@ import resources.dir;
  */
 public class canvasOverlay {
     
+    /**
+     * The one and only static instance of the canvas overlay
+     */
     private static canvasOverlay instance = new canvasOverlay();
     
+    /**
+     * Returns the instance of the canvas, kinda pointless IMO
+     * @return static instance of canvasOverlay()
+     */
     public static canvasOverlay getInstance(){
         return instance;
     }
     
+    /**
+     * The almighty Graphics g which somehow paints all drawables to the canvas
+     */
     private Graphics g;
+    /**
+     * ArrayList for any drawables except the coordinate grid and the inventory
+     */
     private ArrayList<drawable> drawables;
+    /**
+     * Outlines tiles
+     */
     private grid coordinateGrid;
+    /**
+     * Boolean flag whether or not to show the grid
+     */
     private static boolean SHOW_GRID;
     
-    //this will be the overlay to seperate the tiles, inventory, etc
+    /**
+     * private constructor.  
+     * Instantiates drawable arrays, adds action listeners for drawable calibration
+     */
     private canvasOverlay(){
         drawables = new ArrayList<>();
         coordinateGrid = new grid("main_grid");
         canvasOverlay.SHOW_GRID = false;
-        drawables.add(new Text("It's just a prank, bro!", 50, 200, Color.RED, "just_a_prank_bro"));
         
         addDebugActionListeners();
     }
     
+    /**
+     * Draws the grid if needed
+     * Iterates through all drawables and calles the drawable.draw() function
+     * @param g
+     */
     public void drawAll(Graphics g){
         for (drawable drawMe : drawables) {
             drawMe.draw(g);
@@ -51,10 +77,19 @@ public class canvasOverlay {
         }
     }
     
+    /**
+     * Add a drawable to the canvas
+     * @param d
+     */
     public void addDrawable(drawable d) {
         drawables.add(d);
     }
     
+    /**
+     * @param index
+     * @return drawable
+     * Returns the specified drawable from arraylist of drawables
+     */
     public drawable getDrawable(int index) {
         try {
             return drawables.get(index);
@@ -64,6 +99,10 @@ public class canvasOverlay {
         }
     }
     
+    /**
+     * Removes drawable from list specified by index
+     * @param index
+     */
     public void removeDrawable(int index) {
         try {
             drawables.remove(index);
@@ -72,18 +111,52 @@ public class canvasOverlay {
         }
     }
     
+    /**
+     * Removes drawable from list specified by name
+     * @param name
+     */
+    public void removeDrawable(String name) {
+        int oldSize = drawables.size();
+        for (drawable d : drawables) {
+            if (d.toString().equals(name)) {
+                drawables.remove(d);
+            }
+        }
+        if (oldSize == drawables.size()) {
+            throw new IllegalArgumentException("Not found!");
+        }
+    }
+    
+    /**
+     * Changes bool flag to show or hide coordinate grid
+     * @param SHOW_GRID
+     */
     public static void setGridVisible(boolean SHOW_GRID) {
         canvasOverlay.SHOW_GRID = SHOW_GRID;
     }
     
+    /**
+     * Get the current state of boolean SHOW_GRID
+     * @return SHOW_GRID
+     */
     public static boolean getGridVisible() {
         return canvasOverlay.SHOW_GRID;
     }
     
+    /**
+     * Getter for the instance of grid
+     * @return coordinateGrid
+     */
     public grid getGrid() {
         return coordinateGrid;
     }
     
+    /**
+     * Moves the drawable specified by name, direction, and pixel amount
+     * @param name
+     * @param amount
+     * @param d 
+     */
     public void move(String name, int amount, dir d){
         drawable item = getSpecifiedDrawable(name);
         if(item != null) {
@@ -93,6 +166,10 @@ public class canvasOverlay {
         }
     }
     
+    /**
+     * Gets the drawable specified by name
+     * @return drawable
+     */
     private drawable getSpecifiedDrawable(String name){
         for (Line ofCoke : coordinateGrid.getLines()) {
             if(name.equals(ofCoke.toString())) {
@@ -108,6 +185,9 @@ public class canvasOverlay {
         return null;
     }
     
+    /**
+     * Adds functions for calibrating/debugging the drawables on the canvas
+     */
     public void addDebugActionListeners(){
        MenuBar.shiftUp.addActionListener(up);
        MenuBar.shiftDown.addActionListener(down);
@@ -116,6 +196,9 @@ public class canvasOverlay {
        MenuBar.printGridCoordinates.addActionListener(printCoordinates);
     }
     
+    /**
+     * Input sanitization, moves drawable up
+     */
     private ActionListener up = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -134,6 +217,9 @@ public class canvasOverlay {
         }
     };
     
+    /**
+     * Input sanitization, moves drawable down
+     */
     private ActionListener down = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -152,6 +238,9 @@ public class canvasOverlay {
         }
     };
     
+    /**
+     * Input sanitization, moves drawable left
+     */
     private ActionListener left = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -169,7 +258,10 @@ public class canvasOverlay {
             move(name, amount, dir.LEFT);
         }
     };
-        
+
+    /**
+     * Input sanitization, moves drawable right
+     */
     private ActionListener right = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -188,6 +280,9 @@ public class canvasOverlay {
         }
     };
     
+    /**
+     * Prints coordinates of the grid
+     */
     private ActionListener printCoordinates = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {

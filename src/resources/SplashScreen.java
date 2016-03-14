@@ -19,6 +19,9 @@ import utilities.Util;
 public class SplashScreen extends JPanel {
     private JLabel splash;
     
+    /**
+     * The classic old school runescape loading screen!
+     */
     public SplashScreen(){
         splash = new JLabel(Util.loadIcon("http://www.runescape.com/img/rsp777/oldschool_ani.gif"));
         setLayout(new BorderLayout());

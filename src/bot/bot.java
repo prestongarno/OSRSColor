@@ -15,21 +15,32 @@ import java.util.ArrayList;
  */
 public class bot implements Runnable {
     
-    //this will get updated from the game class
+    /**
+     * The one and only almighty copy of the CANVAS that we can 
+     * use for anything
+     */
     public static BufferedImage CANVAS;
     
+    /**
+     * public constructor
+     */
     public bot() {
         bot.CANVAS = null;
         
     }
-
+    
+    /**
+     * Run this bot
+     */
     @Override
     public void run() {
         
     }
-
+    
+    /**
+     * Runs all of the commands through!
+     */
     private void runBot(ArrayList<OSAction> a) {
-        
         for (OSAction a1 : a) {
             a1.perform();
         }

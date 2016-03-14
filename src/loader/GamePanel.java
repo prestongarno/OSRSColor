@@ -44,12 +44,11 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
     }
 
     /**
-     * ******************************
      * Public constructor, loads and adds the applet to the panel
      *
      * @param world the specified world to start the game in
      * @param width width of the applet
-     * @param height height of the applet *****************************
+     * @param height height of the applet
      */
     public void create(String world, int width, int height) {
 
@@ -103,8 +102,8 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
     }
 
     /**
-     * ******************************
-     * Starts the applet *****************************
+     * 
+     * Starts the applet 
      */
     public void start() {
         if (applet != null) {
@@ -122,8 +121,8 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
     }
 
     /**
-     * ******************************
-     * Stops the applet, calls destroy() *****************************
+     * 
+     * Stops the applet, calls destroy() 
      */
     public void stop() {
         if (applet != null) {
@@ -137,7 +136,7 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
      * ******************************
      * Method to get the current instance of the applet
      *
-     * @return applet the game applet *****************************
+     * @return applet the game applet 
      */
     public Applet getApplet() {
         return applet;
@@ -147,7 +146,7 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
      * ******************************
      * Gets and returns the canvas from the applet
      *
-     * @return canvas the game canvas *****************************
+     * @return canvas the game canvas 
      */
     public Canvas getCanvas() {
         return (Canvas) applet.getComponent(0);
@@ -157,7 +156,7 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
      * ******************************
      * Returns the classloader
      *
-     * @return loader the class loader *****************************
+     * @return loader the class loader 
      */
     public ClassLoader getClassLoader() {
         return loader;

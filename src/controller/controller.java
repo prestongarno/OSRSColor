@@ -23,47 +23,85 @@ import loader.GamePanel;
  * @author Preston Garno
  */
 public final class controller {
-
+    
+    /**
+     * Holds the main game, script, bot threads
+     */
     private static ArrayList<Thread> ThreadManager;
-
+    
+    /**
+     * the bot
+     */
     private bot robot;
+    /**
+     * The game/applet loader
+     */
     public static GamePanel game;
+    /**
+     * The frame, am I overdoing this?
+     */
     public static JFrame frame;
-
+    
+    /**
+     * Public constructor
+     */
     public controller() {
         robot = new bot();
         game = new GamePanel();
         this.display();
     }
-
+    
+    /**
+     * Starts the game
+     */
     private void startGameThread() {
         Thread gameThread = new Thread(game);
         gameThread.start();
     }
-
+    
+    /**
+     * Starts the bot
+     */
     private void startRobotThread() {
         Thread botThread = new Thread(robot);
         botThread.start();
     }
-
+    
+    /**
+     * Add a thread to the manager
+     * @param t
+     */
     public static void addThread(Thread t) {
         ThreadManager.add(t);
     }
-
+    
+    /**
+     * Kill specified thread
+     * @param index
+     */
     public static void killThread(int index) {
         ThreadManager.get(index).destroy();
     }
-
+    
+    /**
+     * Starts specified thread
+     * @param index
+     */
     public static void startThread(int index) {
         ThreadManager.get(index).start();
     }
     
     
-    //this is the static class to pass all actions that are to be done to the game
+    /**
+     * Don't think we need this method
+     */
     public static void doAction(){
         
     }
-
+    
+    /**
+     * Show the application
+     */
     public void display() {
         try {
             JPopupMenu.setDefaultLightWeightPopupEnabled(false);
@@ -87,10 +125,16 @@ public final class controller {
 
     }
     
+    /**
+     * pass game canvas to the bot for further dissection
+     */
     public static void setBotCanvasInstance(){
         bot.CANVAS = game.getScreen();
     }
 
+    /**
+     * Brutally force all threads to stop and end the application
+     */
     private WindowAdapter onClose = new WindowAdapter() {
         @Override
         public void windowClosing(WindowEvent e) {

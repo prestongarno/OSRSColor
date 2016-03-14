@@ -16,9 +16,16 @@ import javax.swing.text.DefaultCaret;
  * @author Preston Garno
  */
 public class console extends JPanel {
-
+    
+    /**
+     * The one and only
+     */
     public static final console instance = new console();
-
+    
+    /**
+     * Returns the console but using public final instance saved me
+     * so much typing in the end
+     */
     public static console getInstance() {
         return instance;
     }
@@ -27,7 +34,10 @@ public class console extends JPanel {
     private JTextField input;
     private JTextArea textBox;
     private static final String newline = "\n";
-
+    
+    /**
+     * Public constructor
+     */
     private console() {
         setLayout(new BorderLayout(0, 5));
         //add(MenuBar.getInstance(), BorderLayout.NORTH);
@@ -67,23 +77,27 @@ public class console extends JPanel {
 
         setPreferredSize(new Dimension(600, 150));
     }
-
+    
+    /**
+     * Write to the console
+     * @param message
+     */
     public static void log(String message) {
         instance.textBox.append(message + newline);
-        
-
     }
-
+    
+    /**
+     * eventually used to run commands from the console
+     */
     public String getLastLine() {
         String[] commands = instance.textBox.getText().split(newline);
-
         return commands[commands.length - 1];
     }
-
-    public void displayException(Exception ex) {
-        log(ex.getMessage());
-    }
-
+    
+    /**
+     * print stacktrace since it won't print to standard console because 
+     * of the Xboot JVM arg
+     */
     public static void log(Exception ex) {
         StackTraceElement[] stackTrace = ex.getStackTrace();
         log("ERROR!" + ex.getClass() + " Exception at:");

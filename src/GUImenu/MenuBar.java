@@ -14,21 +14,31 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 /**
- *
  * @author Preston Garno
  */
 public class MenuBar extends JMenuBar {
     
+    /**
+     * The single static instance of the MenuBar for the application
+     */
     public static final MenuBar instance = new MenuBar();
     
+    /**
+     * Menu for "tools" of the application, mainly debug
+     */
     public static JMenu Tools;
+    /**
+     * JMenuItems 
+     */
     public static JMenuItem screenShot, showGrid, printGridCoordinates;
+    /**
+     * JButtons for things needed to have mouse focus somewhere else (select
+     * by pressing enter)
+     */
     public static JButton readTopLeft, saveTopLeft, scan;
     
     /***********************************
-     * 
      *      DEBUG BUTTONS ONLY HERE
-     * 
      * ********************************/
     public static JButton shiftUp, shiftDown, shiftRight, shiftLeft;
     public static JTextField howMuchShift;
@@ -37,6 +47,9 @@ public class MenuBar extends JMenuBar {
      * 
      *********************************/
     
+    /**
+     * public constructor, instantiates and sets text for ALL menu items
+     */
     public MenuBar(){
         Tools = new JMenu("Tools");
         
@@ -77,6 +90,9 @@ public class MenuBar extends JMenuBar {
         add(howMuchShift);
     }
     
+    /**
+     * elegant way to get the instance of the menu, kinda pointless
+     */
     public static MenuBar getInstance(){
         instance.setMaximumSize(new Dimension(500, 10));
         return instance;

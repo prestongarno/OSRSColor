@@ -6,7 +6,6 @@
 package ScriptLoader;
 
 /**
- *
  * @author Preston Garno
  */
 public abstract class OSAction {

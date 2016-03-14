@@ -19,8 +19,14 @@ import resources.dir;
  */
 public class grid extends drawable {
     
+    /**
+     * Name of this grid
+     */
     private String name;
     
+    /**
+     * border around the game
+     */
     private Rectangle BORDER = new Rectangle(0, 0, 516, 338, Color.green, "game_border");
     
     /********************/
@@ -61,6 +67,9 @@ public class grid extends drawable {
     private Line y22 = new Line(483, 0, 516, 105, Color.green, "y22");
     /********************/
     
+    /**
+     * Holds and manages the lines of the grid
+     */
     private   ArrayList<Line> lines = new ArrayList<Line>() {{
         
         add(x1);add(x2);add(x3);add(x4);add(x5);add(x6);add(x7);
@@ -70,26 +79,28 @@ public class grid extends drawable {
         add(y8);add(y9);add(y10);add(y11);add(y12);add(y13);
         add(y14);add(y15);add(y16);add(y17);add(y18);add(y19);add(y20);
         add(y21);add(y22);
-        
-        x1.setToString("x1");x2.setToString("x2");x3.setToString("x3");x4.setToString("x4");
-        x5.setToString("x5");x6.setToString("x6");x7.setToString("x7");x8.setToString("x8");
-        x9.setToString("x9");x10.setToString("x10");x11.setToString("x11");x12.setToString("x12");
-        x13.setToString("x13");y1.setToString("y1");y2.setToString("y2");y3.setToString("y3");y4.setToString("y4");
-        y5.setToString("y5");y6.setToString("y6");y7.setToString("y7");y8.setToString("y8");
-        y9.setToString("y9");y10.setToString("y10");y11.setToString("y11");y12.setToString("y12");
-        y13.setToString("y13");y14.setToString("y14");y15.setToString("y15");y16.setToString("y16");y17.setToString("y17");
-        y18.setToString("y18");y19.setToString("y19");y20.setToString("y20");y21.setToString("y20");
-        y21.setToString("y21");y22.setToString("y22");
     }};
     
+    /**
+     * public constructor
+     * @param name
+     */
     public grid(String name){
         this.name = name;
     }
     
+    /**
+     * Get the ArrayList of lines
+     * @return lines
+     */
     public ArrayList<Line> getLines(){
         return lines;
     }
-
+    
+    /**
+     * Draw method to paint on canvas
+     * @param g
+     */
     @Override
     public void draw(Graphics g) {
         BORDER.draw(g);
@@ -98,16 +109,29 @@ public class grid extends drawable {
         }
     }
     
+    /**
+     * Get the name
+     * @return name
+     */
     @Override
     public String toString() {
         return name;
     }
-
+    
+    /**
+     * Set the name
+     * @param name
+     */
     @Override
     public void setToString(String name) {
         this.name = name;
     }
-
+    
+    /**
+     * Move the grid in specified dir by x amount of pixels
+     * @param amount 
+     * @param d
+     */
     @Override
     public void move(int amount, dir d) {
         
@@ -132,6 +156,4 @@ public class grid extends drawable {
         }
         console.log("/********************/");
     }
-    
-    
 }

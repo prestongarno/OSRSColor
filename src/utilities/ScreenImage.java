@@ -5,14 +5,11 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Date;
 import javax.imageio.*;
-import javax.swing.*;
 
 /*
  *  Convenience class to create and optionally save to a file a
