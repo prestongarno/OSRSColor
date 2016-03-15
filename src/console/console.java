@@ -47,12 +47,6 @@ public class console extends JPanel {
 
         HUD = new JScrollPane(textBox);
         HUD.setSize(new Dimension(600, 150));
-<<<<<<< HEAD
-=======
-
-        input = new JTextField(600);
->>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
-
         input = new JTextField(600);
         add(debugPanel.getInstance(), BorderLayout.NORTH);
         add(HUD, BorderLayout.CENTER);
@@ -80,12 +74,8 @@ public class console extends JPanel {
         });
 
         add(input, BorderLayout.SOUTH);
-
-<<<<<<< HEAD
+        
         setPreferredSize(new Dimension(600, 200));
-=======
-        setPreferredSize(new Dimension(600, 150));
->>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
     }
     
     /**

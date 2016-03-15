@@ -5,12 +5,13 @@
  */
 package ScriptLoader;
 
+import bot.bot;
 import controller.controller;
 import java.applet.Applet;
-import java.awt.AWTEvent;
-import java.awt.event.ActionEvent;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
 /**
  * @author Preston Garno
@@ -18,16 +19,30 @@ import java.awt.event.MouseEvent;
 public abstract class OSAction{
     
     protected Applet app;
+    protected BufferedImage canvas;
     
-    ActionEvent DankMeme;
+    private MouseEvent click;
     
     public OSAction(){
         this.app = controller.getApplet();
+        this.canvas = bot.CANVAS;
+        
+        click = (new MouseEvent(app,
+            MouseEvent.MOUSE_PRESSED,
+            System.currentTimeMillis() + 10,
+            MouseEvent.BUTTON1,
+            0, 0, 0,
+            false));
     }
     
     public abstract void perform();
     
-    public void click(int x, int y){
+    public void leftClick(int x, int y){
+        click.translatePoint(x, y);
+        app.dispatchEvent(click);
+    }
+    
+    public void rightClick(int x, int y){
         
     }
     

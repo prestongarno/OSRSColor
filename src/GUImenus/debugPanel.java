@@ -5,24 +5,19 @@
  */
 package GUImenus;
 
-<<<<<<< HEAD
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-=======
->>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
 /**
  *
  * @author Preston Garno
  */
-<<<<<<< HEAD
 public class debugPanel extends JPanel {
     
     public static debugPanel instance = new debugPanel();
@@ -68,8 +63,4 @@ public class debugPanel extends JPanel {
     /**********************************
      * 
      *********************************/
-=======
-public class debugPanel {
->>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
-    
 }

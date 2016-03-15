@@ -35,7 +35,7 @@ public class MenuBar extends JMenuBar {
      * JButtons for things needed to have mouse focus somewhere else (select
      * by pressing enter)
      */
-    public static JButton readTopLeft, saveTopLeft, scan;
+    public static JButton readTopLeft, saveTopLeft;
     
     /**
      * public constructor, instantiates and sets text for ALL menu items
@@ -49,7 +49,6 @@ public class MenuBar extends JMenuBar {
         
         readTopLeft = new JButton("OCR topLeft");
         saveTopLeft = new JButton("Save topLeft");
-        scan = new JButton("Scan Screen");
         
         Tools.add(screenShot);
         Tools.add(showGrid);
@@ -58,7 +57,6 @@ public class MenuBar extends JMenuBar {
         add(Tools);
         add(readTopLeft);
         add(saveTopLeft);
-        add(scan);
     }
     
     /**
