@@ -6,7 +6,10 @@
 package controller;
 
 import GUImenus.MenuBar;
+<<<<<<< HEAD
 import GUImenus.debugPanel;
+=======
+>>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
 import ScriptLoader.OSAction;
 import bot.bot;
 import console.console;
@@ -113,7 +116,10 @@ public final class controller {
             frame.add(game, BorderLayout.CENTER);
             frame.add(console.getInstance(), BorderLayout.SOUTH);
             game.setPreferredSize(new Dimension(770, 505));
+<<<<<<< HEAD
             debugPanel.getInstance().create();
+=======
+>>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
             frame.pack();
             frame.setVisible(true);
         } catch(Exception ex) {

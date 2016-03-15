@@ -6,7 +6,10 @@
 package Overlay;
 
 import GUImenus.MenuBar;
+<<<<<<< HEAD
 import GUImenus.debugPanel;
+=======
+>>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
 import Overlay.drawable.*;
 import console.console;
 import java.awt.Color;
@@ -190,10 +193,17 @@ public class canvasOverlay {
      * Adds functions for calibrating/debugging the drawables on the canvas
      */
     public void addDebugActionListeners(){
+<<<<<<< HEAD
        debugPanel.shiftUp.addActionListener(up);
        debugPanel.shiftDown.addActionListener(down);
        debugPanel.shiftLeft.addActionListener(left);
        debugPanel.shiftRight.addActionListener(right);
+=======
+       MenuBar.shiftUp.addActionListener(up);
+       MenuBar.shiftDown.addActionListener(down);
+       MenuBar.shiftLeft.addActionListener(left);
+       MenuBar.shiftRight.addActionListener(right);
+>>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
        MenuBar.printGridCoordinates.addActionListener(printCoordinates);
     }
     
@@ -206,8 +216,13 @@ public class canvasOverlay {
             String name = "";
             int amount = 0;
             try{
+<<<<<<< HEAD
                 amount = Integer.parseInt(debugPanel.howMuchShift.getText());
                 name = debugPanel.targetLine.getText();
+=======
+                amount = Integer.parseInt(MenuBar.howMuchShift.getText());
+                name = MenuBar.targetLine.getText();
+>>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
             } catch (NumberFormatException n) {
                 console.log("Invalid range!");
             } catch (Exception ex) {
@@ -227,8 +242,13 @@ public class canvasOverlay {
             String name = "";
             int amount = 0;
             try{
+<<<<<<< HEAD
                 amount = Integer.parseInt(debugPanel.howMuchShift.getText());
                 name = debugPanel.targetLine.getText();
+=======
+                amount = Integer.parseInt(MenuBar.howMuchShift.getText());
+                name = MenuBar.targetLine.getText();
+>>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
             } catch (NumberFormatException n) {
                 console.log("Invalid range!");
             } catch (Exception ex) {
@@ -248,8 +268,13 @@ public class canvasOverlay {
             String name = "";
             int amount = 0;
             try{
+<<<<<<< HEAD
                 amount = Integer.parseInt(debugPanel.howMuchShift.getText());
                 name = debugPanel.getInstance().targetLine.getText();
+=======
+                amount = Integer.parseInt(MenuBar.howMuchShift.getText());
+                name = MenuBar.targetLine.getText();
+>>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
             } catch (NumberFormatException n) {
                 console.log("Invalid range!");
             } catch (Exception ex) {
@@ -269,8 +294,13 @@ public class canvasOverlay {
             String name = "";
             int amount = 0;
             try{
+<<<<<<< HEAD
                 amount = Integer.parseInt(debugPanel.howMuchShift.getText());
                 name = debugPanel.targetLine.getText();
+=======
+                amount = Integer.parseInt(MenuBar.howMuchShift.getText());
+                name = MenuBar.targetLine.getText();
+>>>>>>> 1eed2cea68c447eb9371898c18086f233de1b0de
             } catch (NumberFormatException n) {
                 console.log("Invalid range!");
             } catch (Exception ex) {
