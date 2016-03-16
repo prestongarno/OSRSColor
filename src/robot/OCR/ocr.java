@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bot.OCR;
+package robot.OCR;
 
 import java.awt.image.BufferedImage;
-import bot.OCR.REGTextScanner.REGTextScanner;
+import robot.OCR.REGTextScanner.REGTextScanner;
 
 /**
  * @author Preston Garno

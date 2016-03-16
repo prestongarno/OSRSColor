@@ -1,6 +1,6 @@
 package java.awt;
 
-import bot.bot;
+import robot.bot;
 import console.console;
 import listener.PaintListener;
 import java.awt.image.BufferStrategy;

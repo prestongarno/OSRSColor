@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OCR;
+package robot;
 
 /**
  *
- * @author pgarno
+ * @author Preston Garno
  */
-public class chatOCR {
+public class mouseEvents {
     
 }

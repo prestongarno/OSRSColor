@@ -8,7 +8,7 @@ package controller;
 import GUImenus.MenuBar;
 import GUImenus.debugPanel;
 import ScriptLoader.OSAction;
-import bot.bot;
+import robot.bot;
 import console.console;
 import java.applet.Applet;
 import java.awt.AWTEvent;

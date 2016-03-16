@@ -1,4 +1,4 @@
-package bot.OCR.REGTextScanner;
+package robot.OCR.REGTextScanner;
 
 import java.awt.Color;
 import java.awt.Point;

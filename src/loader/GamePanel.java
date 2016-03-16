@@ -1,7 +1,9 @@
 package loader;
 
 import GUImenus.MenuFunctions;
+import GUImenus.debugPanel;
 import Overlay.*;
+import console.console;
 import listener.PaintListener;
 import utilities.*;
 import javax.swing.*;
@@ -14,6 +16,9 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
 import controller.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 //import ocr.ocr;
 import resources.SplashScreen;
 
@@ -31,9 +36,10 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
     private URLClassLoader loader;
     private URL codebase, documentBase;
     private SplashScreen loadingScreen;
+    private Point p;
 
     public GamePanel() {
-
+        applet = new Applet();
     };
     
     @Override
@@ -80,7 +86,8 @@ public class GamePanel extends JPanel implements AppletStub, Runnable {
             this.start();
             MenuFunctions.addActions();
             controller.frame.pack();
-            
+            this.getApplet().getComponent(0).addMouseListener(debugPanel.mouseListener);
+            //this.getApplet().getComponent(0).addMouseMotionListener(debugPanel.motionListener);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error Loading.. Please Check Your Internet Connection.", "Error Loading..", JOptionPane.ERROR_MESSAGE);
         }

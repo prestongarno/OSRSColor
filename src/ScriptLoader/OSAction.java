@@ -5,7 +5,7 @@
  */
 package ScriptLoader;
 
-import bot.bot;
+import robot.bot;
 import controller.controller;
 import java.applet.Applet;
 import java.awt.*;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bot;
+package robot;
 
 import ScriptLoader.*;
 import java.awt.image.BufferedImage;

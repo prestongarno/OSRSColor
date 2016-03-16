@@ -6,7 +6,7 @@
 package ScriptLoader;
 
 import ScriptLoader.Actions.*;
-import bot.bot;
+import robot.bot;
 import java.io.File;
 import java.util.ArrayList;
 

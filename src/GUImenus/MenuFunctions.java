@@ -2,8 +2,8 @@
 package GUImenus;
 
 import Overlay.canvasOverlay;
-import bot.OCR.REGTextScanner.REGTextScanner;
-import bot.bot;
+import robot.OCR.REGTextScanner.REGTextScanner;
+import robot.bot;
 import console.console;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

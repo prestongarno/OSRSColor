@@ -5,9 +5,13 @@
  */
 package GUImenus;
 
+import console.console;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -34,10 +38,11 @@ public class debugPanel extends JPanel {
         howMuchShift.setColumns(5);
         targetLine = new JTextField("x1");
         targetLine.setColumns(5);
+        mouse = new JLabel("Point: (0, 0)");
     }
     
     private void registerListeners(ActionListener al, JComponent j){
-        //register them here, need getters for all buttons though
+        
     }
     
     public void create(){
@@ -60,7 +65,39 @@ public class debugPanel extends JPanel {
     public static JButton shiftUp, shiftDown, shiftRight, shiftLeft;
     public static JTextField howMuchShift;
     public static JTextField targetLine;
+    public static JLabel mouse;
     /**********************************
      * 
      *********************************/
+    
+    public static MouseListener mouseListener = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            console.log("Point: (" + e.getX() + ", " + e.getY() + ")");
+        }
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+    };
+    
+    public static MouseMotionListener motionListener = new MouseMotionListener() {
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            mouse.setText("Point: (" + e.getX() + ", " + e.getY());
+        }
+    };
 }

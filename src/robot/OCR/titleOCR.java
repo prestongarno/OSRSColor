@@ -1,5 +1,5 @@
 
-package OCR;
+package robot.OCR;
 
 import java.util.ArrayList;
 
