@@ -61,6 +61,10 @@ public class canvasOverlay {
         coordinateGrid = new grid("main_grid");
         canvasOverlay.SHOW_GRID = false;
         
+        drawables.add(new Line(249, 170, 269, 170, Color.red, "cross_x"));
+        drawables.add(new Line(259, 160, 259, 180, Color.red, "cross_y"));
+        drawables.add(new Pixel(259, 170, Color.red, "CENTER"));
+        
         addDebugActionListeners();
     }
     

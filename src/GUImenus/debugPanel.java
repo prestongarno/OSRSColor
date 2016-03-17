@@ -38,7 +38,8 @@ public class debugPanel extends JPanel {
         howMuchShift.setColumns(5);
         targetLine = new JTextField("x1");
         targetLine.setColumns(5);
-        mouse = new JLabel("Point: (0, 0)");
+        scrBlobTest = new JButton("Scr. Around Player");
+        faceNorth = new JButton("Face North");
     }
     
     private void registerListeners(ActionListener al, JComponent j){
@@ -54,18 +55,21 @@ public class debugPanel extends JPanel {
         add(targetLine);
         add(new JLabel("Amnt:"));
         add(howMuchShift);
+        add(scrBlobTest);
+        add(faceNorth);
         this.setLayout(new FlowLayout());
         this.setPreferredSize(new Dimension(this.getParent().getWidth(), 30));
         this.setVisible(true);
+        debugActions.addActions();
     }
     
     /***********************************
      *      DEBUG BUTTONS ONLY HERE
      * ********************************/
-    public static JButton shiftUp, shiftDown, shiftRight, shiftLeft;
+    public static JButton shiftUp, shiftDown, shiftRight, shiftLeft, scrBlobTest;
+    public static JButton faceNorth;
     public static JTextField howMuchShift;
     public static JTextField targetLine;
-    public static JLabel mouse;
     /**********************************
      * 
      *********************************/
@@ -83,6 +87,7 @@ public class debugPanel extends JPanel {
         }
         @Override
         public void mouseEntered(MouseEvent e) {
+            
         }
         @Override
         public void mouseExited(MouseEvent e) {
@@ -97,7 +102,7 @@ public class debugPanel extends JPanel {
 
         @Override
         public void mouseMoved(MouseEvent e) {
-            mouse.setText("Point: (" + e.getX() + ", " + e.getY());
+            //mouse.setText("Point: (" + e.getX() + ", " + e.getY());
         }
     };
 }

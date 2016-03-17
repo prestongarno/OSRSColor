@@ -7,77 +7,101 @@ package ScriptLoader;
 
 import robot.bot;
 import controller.controller;
-import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 /**
  * @author Preston Garno
  */
-public abstract class OSAction{
-    
-    protected Applet app;
+public abstract class OSAction {
+
+    protected Component target;
     protected BufferedImage canvas;
-    
-    private MouseEvent click;
-    
-    public OSAction(){
-        this.app = controller.getApplet();
+    protected Random rand;
+
+    public OSAction() {
+        this.target = controller.getApplet().getComponent(0);
         this.canvas = bot.CANVAS;
-        
-        click = (new MouseEvent(app,
-            MouseEvent.MOUSE_PRESSED,
-            System.currentTimeMillis() + 10,
-            MouseEvent.BUTTON1,
-            0, 0, 0,
-            false));
     }
-    
+
     public abstract void perform();
-    
-    public void leftClick(int x, int y){
-        click.translatePoint(x, y);
-        app.dispatchEvent(click);
+
+    public void leftClick(int x, int y) {
+        target.dispatchEvent(leftDown(x, y));
+        target.dispatchEvent(leftUp(x, y));
     }
-    
-    public void rightClick(int x, int y){
+
+    public void rightClick(int x, int y) {
+        target.dispatchEvent(rightDown(x, y));
+        target.dispatchEvent(rightUp(x, y));
+    }
+
+    public void clickInBox(int x, int y, int width, int height, int mouseButton) {
+        rand = new Random();
+        int randomHeight = 1;
+        int randomWidth = 1;
+        randomHeight = 1 + rand.nextInt((height - 1) + 1);
+        randomWidth = 1 + rand.nextInt((width - 1) + 1);
+        
+        if(mouseButton == MouseEvent.BUTTON1) {
+            leftClick(x + randomWidth, y + randomHeight);
+        } else if (mouseButton == MouseEvent.BUTTON2) {
+            rightClick(x + randomWidth, y + randomHeight);
+        } else if (mouseButton == MouseEvent.BUTTON3) {
+            
+        } else {
+            throw new IllegalArgumentException("No such MouseButton!");
+        }
+    }
+
+    public void clickInPolygon(int x1, int y1, int x2, int y2) {
         
     }
-    
-    public void clickInBox(int x, int y, int width, int height) {
-        
-    }
-    
-    public void clickInCustomArea(int x1, int y1, int x2, int y2) {
-        
-    }
-    
+
     public void delay(int milliseconds) {
-        
+
     }
-    
+
     public void pressKey(KeyEvent k) {
-        
+
     }
     
-    //taken from old loader :) 
-//    public void resetView(Applet applet){
-//    applet.getComponent(0).dispatchEvent(new MouseEvent(applet,
-//            MouseEvent.MOUSE_PRESSED,
-//            System.currentTimeMillis() + 10,
-//            MouseEvent.BUTTON1,
-//           canvas.getWidth() - 162, 20,
-//            0,
-//            false));
-//
-//    applet.getComponent(0).dispatchEvent(new MouseEvent(applet,
-//            MouseEvent.MOUSE_RELEASED,
-//            System.currentTimeMillis() + 10,
-//            MouseEvent.BUTTON1,
-//           canvas.getWidth() - 162, 20,
-//            0,
-//            false));
-//}
+    private MouseEvent leftDown(int x, int y) {
+        return new MouseEvent(target,
+                MouseEvent.MOUSE_PRESSED,
+                System.currentTimeMillis() + 5,
+                MouseEvent.BUTTON1,
+                x, y, 0,
+                false);
+    }
+    
+    private MouseEvent leftUp(int x, int y) {
+        return new MouseEvent(target,
+                MouseEvent.MOUSE_RELEASED,
+                System.currentTimeMillis() + 5,
+                MouseEvent.BUTTON1,
+                x, y, 0,
+                false);
+    }
+    
+    private MouseEvent rightDown(int x, int y) {
+        return new MouseEvent(target,
+                MouseEvent.MOUSE_PRESSED,
+                System.currentTimeMillis() + 5,
+                MouseEvent.BUTTON1,
+                x, y, 0,
+                false);
+    }
+    
+    private MouseEvent rightUp(int x, int y) {
+        return new MouseEvent(target,
+                MouseEvent.MOUSE_RELEASED,
+                System.currentTimeMillis() + 5,
+                MouseEvent.BUTTON1,
+                x, y, 0,
+                false);
+    }
 }

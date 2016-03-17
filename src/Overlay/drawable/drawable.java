@@ -16,6 +16,9 @@ public abstract class drawable {
     
     private String name;
     
+    /**
+     * public Abstract class used for drawing shapes to the canvas
+     */
     public drawable(){
         
     }

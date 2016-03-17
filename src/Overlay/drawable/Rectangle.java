@@ -19,7 +19,18 @@ public class Rectangle extends drawable {
     private int x, y, width, height;
     Color c;
     private String name;
-
+    
+    /**
+     * EXTENDS DRAWABLE
+     * Add one of these to the canvasOverlay.getDrawables() ArrayList to 
+     * draw to the screen
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @param c
+     * @param name 
+     */
     public Rectangle(int x, int y, int width, int height, Color c, String name) {
         this.x = x;
         this.y = y;

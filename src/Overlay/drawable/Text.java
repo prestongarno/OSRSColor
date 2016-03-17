@@ -20,7 +20,16 @@ public class Text extends drawable {
     private Color c;
     private String name;
     
-    
+    /**
+     * EXTENDS DRAWABLE
+     * Add one of these to the canvasOverlay.getDrawables() ArrayList to 
+     * draw to the screen
+     * @param message
+     * @param x
+     * @param y
+     * @param c
+     * @param name 
+     */
     public Text(String message, int x, int y, Color c, String name){
         this.message = message;
         this.x = x;

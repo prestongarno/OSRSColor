@@ -20,7 +20,18 @@ public class Line extends drawable {
     private int x1, x2, y1, y2;
     Color c;
     private String name;
-
+    
+    /**
+     * EXTENDS DRAWABLE
+     * Add one of these to the canvasOverlay.getDrawables() ArrayList to 
+     * draw to the screen
+     * @param x1
+     * @param y1
+     * @param x2
+     * @param y2
+     * @param c
+     * @param name 
+     */
     public Line(int x1, int y1, int x2, int y2, Color c, String name) {
         this.c = c;
         this.x1 = x1;

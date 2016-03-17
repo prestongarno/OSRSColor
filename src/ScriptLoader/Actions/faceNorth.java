@@ -6,6 +6,8 @@
 package ScriptLoader.Actions;
 
 import ScriptLoader.OSAction;
+import console.console;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -24,7 +26,7 @@ public class faceNorth extends OSAction {
     
     @Override
     public void perform() {
-        
+        clickInBox(551, 13, 20, 20, MouseEvent.BUTTON1);
     }
     
 }
