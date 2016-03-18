@@ -27,10 +27,14 @@ public abstract class OSAction {
         this.canvas = bot.CANVAS;
     }
 
+<<<<<<< HEAD
     public abstract void perform(String[] args);
     
     @Override
     public abstract String toString();
+=======
+    public abstract void perform();
+>>>>>>> 4996f662915e46926c8f82832715f0a0ac045952
 
     public void leftClick(int x, int y) {
         target.dispatchEvent(leftDown(x, y));

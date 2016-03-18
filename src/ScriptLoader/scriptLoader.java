@@ -46,6 +46,7 @@ public class scriptLoader {
     }
     
     /**
+<<<<<<< HEAD
      * call the appropriate static method when entered into console
      */
     private OSAction evaluateAction(String line, String[] args) {
@@ -55,6 +56,13 @@ public class scriptLoader {
             } 
         }
         throw new IllegalArgumentException("Command " + line + " not found!");
+=======
+     * Don't know what I was thinking when I wrote this method but I think it's 
+     * input validation on the .txt file
+     */
+    private OSAction evaluateAction(String line) {
+        return new walk();
+>>>>>>> 4996f662915e46926c8f82832715f0a0ac045952
     }
     
 }

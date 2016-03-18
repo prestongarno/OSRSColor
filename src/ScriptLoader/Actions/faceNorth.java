@@ -25,6 +25,7 @@ public class faceNorth extends OSAction {
     }
     
     @Override
+<<<<<<< HEAD
     public void perform(String[] args) {
         clickInBox(551, 13, 20, 20, MouseEvent.BUTTON1);
     }
@@ -34,4 +35,10 @@ public class faceNorth extends OSAction {
          return "resetView";
     }
     
+=======
+    public void perform() {
+        clickInBox(551, 13, 20, 20, MouseEvent.BUTTON1);
+    }
+    
+>>>>>>> 4996f662915e46926c8f82832715f0a0ac045952
 }

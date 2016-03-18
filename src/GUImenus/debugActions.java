@@ -41,7 +41,11 @@ public class debugActions {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
+<<<<<<< HEAD
                 CMD.FACENORTH.perform(new String[0]);
+=======
+                CMD.FACENORTH.perform();
+>>>>>>> 4996f662915e46926c8f82832715f0a0ac045952
             } catch (Exception ex) {
                 console.log(ex);
             }

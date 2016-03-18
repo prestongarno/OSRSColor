@@ -5,9 +5,13 @@
  */
 package ScriptLoader;
 
+<<<<<<< HEAD
 import ScriptLoader.Actions.click;
 import ScriptLoader.Actions.faceNorth;
 import java.util.ArrayList;
+=======
+import ScriptLoader.Actions.faceNorth;
+>>>>>>> 4996f662915e46926c8f82832715f0a0ac045952
 
 /**
  *
@@ -15,6 +19,7 @@ import java.util.ArrayList;
  */
 public class CMD {
     public static final faceNorth FACENORTH = new faceNorth();
+<<<<<<< HEAD
     public static final click clickConsole = new click();
     
     public static final ArrayList<OSAction> commands = new ArrayList<OSAction>() {{
@@ -24,4 +29,7 @@ public class CMD {
         
         }
     };
+=======
+    //public static final faceNorth FIND = new FIND();
+>>>>>>> 4996f662915e46926c8f82832715f0a0ac045952
 }
