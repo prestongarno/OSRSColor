@@ -18,6 +18,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JPopupMenu;
 import javax.swing.ToolTipManager;
 import loader.GamePanel;
@@ -107,6 +108,9 @@ public final class controller {
             frame = new JFrame("OCRScape 0.1");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.addWindowListener(onClose);
+            
+            JLayeredPane lp = frame.getLayeredPane();
+            
             frame.setResizable(false);
             frame.setLayout(new BorderLayout());
             frame.add(MenuBar.getInstance(), BorderLayout.NORTH);

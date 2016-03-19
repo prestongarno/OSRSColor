@@ -1,6 +1,8 @@
 package console;
 
 import GUImenus.debugPanel;
+import ScriptLoader.CMD;
+import ScriptLoader.OSAction;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -58,13 +60,48 @@ public class console extends JPanel {
             @Override
             public void keyTyped(KeyEvent e) {
             }
-
+            
+            String[] raw;
+            String[] args;
+            
             @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
                 if (key == KeyEvent.VK_ENTER && input.isCursorSet()) {
                     log(input.getText());
-                    input.setText("");
+                    
+                    try {
+                        
+                        boolean validCommand = false;
+                        
+                        raw = input.getText().split("\\s+");
+                        args = new String[raw.length - 1];
+                        
+                        if(raw.length > 0) {
+                            for(int i = 1; i < raw.length; i++) {
+                                args[i-1] = raw[i];
+                            }
+                        }
+                        for (OSAction a : CMD.commands) {
+                            if(raw[0].equals(a.toString())) {
+                                try {
+                                    a.perform(args);
+                                } catch (Exception meh) {
+                                    log(meh);
+                                }
+                                validCommand = true;
+                            }
+                        }
+                        if (validCommand == false) {
+                            log("Invalid input!");
+                        }
+                    } catch (Exception ex) {
+                        log("Invalid Input: " + ex.getLocalizedMessage());
+                        log(ex);
+                    } finally {
+                        input.setText("");
+                    }
+                    
                 }
             }
 

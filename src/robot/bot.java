@@ -40,9 +40,11 @@ public class bot implements Runnable {
     /**
      * Runs all of the commands through!
      */
-    private void runBot(ArrayList<OSAction> a) {
+    private void runBot(ArrayList<OSAction> a, ArrayList<String[]> args) {
+        int counter = 0;
         for (OSAction a1 : a) {
-            a1.perform();
+            a1.perform(args.get(counter));
+            counter++;
         }
     }
 }

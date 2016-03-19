@@ -21,15 +21,15 @@ public class click extends OSAction {
     @Override
     public void perform(String[] args) {
         try {
-            if (args[0].equals("left_click")) {
+            if (args[0].equals("1")) {
                 this.leftClick(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
-            } else if (args[0].equals("right_click")) {
+            } else if (args[0].equals("2")) {
                 this.rightClick(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
             } else {
                 throw new IllegalArgumentException();
             }
         } catch (Exception ex) {
-            console.log("Incorrect Arguments! Requires args: String button, int x, int y");
+            console.log("Incorrect Arguments! Requires args: int button, int x, int y");
         }
     }
 
